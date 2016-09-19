@@ -1,9 +1,9 @@
-<%-- 
+<%--
     Document   : RegistrarU
     Created on : 14-ago-2016, 2:23:11
     Author     : Cleyber
 --%>
-
+<%@page import="util.Routes"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,19 +11,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="css/materialize.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>     
-        <script src="js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="js/materialize.min.js" type="text/javascript"></script>
-        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
-        <script src="js/sweetalert.min.js" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
         <script>
-            $(document).ready(function(){ 
+            $(document).ready(function(){
                 $(".button-collapse").sideNav();
                 $('form').submit(function(evento) {
                  evento.preventDefault();
                 });
-                
+
                 $("#guardar").click(function(){
                     $.ajax({
                        url: "RegistrarUsuarioServlet",
@@ -42,8 +42,8 @@
                            $("#nombre").val("");
                             $("#apellido").val("");
                             $("#cedula").val("");
-                            $('#correo').val("");                          
-                            $('#clave').val("");                           
+                            $('#correo').val("");
+                            $('#clave').val("");
                             $('#cclave').val("");
                        },
                        error: function(respuesta) {
@@ -54,8 +54,8 @@
             });
         </script>
         <title>Registro</title>
-    </head> 
-    
+    </head>
+
     <body bgcolor="#4183d7">
         <%@include file="usuario/menuUser.jsp" %>
         <main>

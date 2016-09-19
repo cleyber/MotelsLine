@@ -1,3 +1,4 @@
+<%@page import="util.Routes"%>
 <%@page import="models.dao.DaoHabitaciones"%>
 <%@page import="models.Habitaciones"%>
 <%@page import="models.Imagen"%>
@@ -5,7 +6,7 @@
 <%
     ArrayList<Habitaciones> list = new ArrayList();
     DaoHabitaciones dao = new DaoHabitaciones();
-    
+
     list = dao.consultarAll();
 %>
 
@@ -15,18 +16,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="../css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-          <link href="../css/style.css" rel="stylesheet" type="text/css"/>
-        
-        <script src="../js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="../js/materialize.min.js" type="text/javascript"></script>
+          <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+
+        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <script>
             $(document).ready(function(){
                $(".button-collapse").sideNav();
                $('.slider').slider({full_width: true});
             });
-            
+
         </script>
         <style>
             ul li{
@@ -43,46 +44,46 @@
                 top: 27%;
                 left: 85%;
             }
-           
+
         </style>
         <title>Habitaciones</title>
     </head>
     <body>
-        
-        <%@include file="menuUser.jsp" %>        
-        
+
+        <%@include file="menuUser.jsp" %>
+
         <div class="slider">
     <ul class="slides">
       <li>
-        <img src="/MotelsLine/img/img1.jpg"> <!-- random image -->
+        <img src="<%=Routes.getUrl("img/img1.jpg")%>"> <!-- random image -->
         <div class="caption center-align">
           <h3>Bienvenido a MotelsLine</h3>
           <h5 class="light grey-text text-lighten-3">La forma mas fácil de reservar un motel</h5>
         </div>
       </li>
       <li>
-        <img src="/MotelsLine/img/img2.jpg"> <!-- random image -->
+        <img src="<%=Routes.getUrl("img/img2.jpg")%>"> <!-- random image -->
         <div class="caption left-align">
           <h3>Elige las mejores habitaciones</h3>
           <h5 class="light grey-text text-lighten-3">Hay para todos los gustos</h5>
         </div>
       </li>
       <li>
-        <img src="/MotelsLine/img/img3.jpg"> <!-- random image -->
+        <img src="<%=Routes.getUrl("img/img3.jpg")%>"> <!-- random image -->
         <div class="caption right-align">
           <h3>Elige los servicios que quieras</h3>
           <h5 class="light grey-text text-lighten-3">A los mejores precios</h5>
         </div>
       </li>
       <li>
-        <img src="/MotelsLine/img/img4.jpg"> <!-- random image -->
+        <img src="<%=Routes.getUrl("img/img4.jpg")%>"> <!-- random image -->
         <div class="caption center-align">
           <h3>has tu mejor reserva</h3>
           <h5 class="light grey-text text-lighten-3"> En simples pasos</h5>
         </div>
       </li>
       <li>
-        <img src="/MotelsLine/img/slider.jpg"> <!-- random image -->
+        <img src="<%=Routes.getUrl("img/slider.jpg")%>"> <!-- random image -->
         <div class="caption right-align">
           <h3>MotelsLine</h3>
           <h5 class="light grey-text text-lighten-3"></h5>
@@ -103,44 +104,44 @@
                         <div class="card">
                             <div class="card-image">
                                 <%
-                                   if(habitacion.getImagenes().size() >= 1){ 
+                                   if(habitacion.getImagenes().size() >= 1){
                                 %>
                                 <div class="slider">
                                     <ul class="slides">
                                         <%
-                                            
+
                                                 for(Imagen imagen : habitacion.getImagenes()){
 
                                          %>
                                       <li>
-                                          <a href="/MotelsLine/usuario/habitacionInfo.jsp?habitacion=<%= habitacion.getId()%>"><img src="/MotelsLine/imgServidor/<%=imagen.getNombre()%>"> </a>  
+                                          <a href="<%=Routes.getUrl("usuario/habitacionInfo.jsp?habitacion=")%><%= habitacion.getId()%>"><img src="<%=Routes.getUrl("imgServidor/")%><%=imagen.getNombre()%>"> </a>
                                       </li>
                                       <%
                                             }
-                                        %> 
-                                    </ul>              
+                                        %>
+                                    </ul>
                                 </div>
                                  <%
                                      }else{
                                  %>
                                  <div>
-                                     <img src="/MotelsLine/img/notImg.png">
+                                     <img src="<%=Routes.getUrl("img/notImg.png")%>">
                                  </div>
                                  <%
                                      }
                                  %>
-                                 <a href="/MotelsLine/usuario/habitacionInfo.jsp?habitacion=<%= habitacion.getId()%>"><h5 class="center-align"><b><%= habitacion.getNombre()%></b></h5></a>                                
+                                 <a href="<%=Routes.getUrl("usuario/habitacionInfo.jsp?habitacion=")%><%= habitacion.getId()%>"><h5 class="center-align"><b><%= habitacion.getNombre()%></b></h5></a>
                             </div>
-                            
+
                         </div>
-                    </div>              
+                    </div>
                 <%
                     }
 
                 %>
                 </div>
-                
-                
+
+
             </section>
         </main>
                 <%@include file="../admin/footer.jsp"%>

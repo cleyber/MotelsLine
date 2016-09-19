@@ -1,28 +1,28 @@
-<%-- 
+<%--
     Document   : login
     Created on : 22-jun-2016, 18:45:50
     Author     : Cleyber
 --%>
-
+<%@page import="util.Routes"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="css/materialize.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">        
-        <script src="js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="js/materialize.min.js" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <script>
-            $(document).ready(function(){                
+            $(document).ready(function(){
                 $(".button-collapse").sideNav();
                 $(".dropdown-button").dropdown();
             });
         </script>
-        
-        
+
+
         <title>Inicio de sesión</title>
     </head>
         <%@include file="usuario/menuUser.jsp" %>
@@ -38,7 +38,7 @@
                   <div class="center-align">
                     <span id="tituloLogin">Ingresar a MotelsLine</span>
                   </div>
-                  <h6 id="pregunta" class="center-align"><a href="registrar.jsp">¿No tienes una cuenta? Registrate</a></h6>
+                  <h6 id="pregunta" class="center-align"><a href="<%=Routes.getUrl("registrar.jsp")%>">¿No tienes una cuenta? Registrate</a></h6>
                   <form action="LoginServlet" method="post">
                     <div class="input-field">
                       <label for="correo">Correo</label>

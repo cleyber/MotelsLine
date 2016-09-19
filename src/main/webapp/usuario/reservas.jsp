@@ -1,9 +1,9 @@
-<%-- 
+<%--
     Document   : reservas
     Created on : 29-ago-2016, 20:39:32
     Author     : Cleyber
 --%>
-
+<%@page import="util.Routes"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.dao.DaoServicios"%>
 <%@page import="models.Servicios"%>
@@ -18,10 +18,10 @@
           response.sendRedirect("/MotelsLine/index.jsp");
         }
     }*/
-   
+
     Servicios servicios = new Servicios();
     DaoServicios dao = new DaoServicios();
-    
+
     ArrayList<Servicios> array = new ArrayList();
     array = dao.consultarAll();
 
@@ -29,15 +29,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="../css/materialize.min.css" rel="stylesheet" type="text/css"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="../css/style.css" rel="stylesheet" type="text/css"/>        
-        <script src="../js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="../js/usuario/reservar.js" type="text/javascript"></script>
-        <script src="../js/materialize.min.js" type="text/javascript"></script>
-        
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+      <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+      <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+      <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+      <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+      <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
+
     </head>
         <%@include file="menuUser.jsp" %>
     <body>
@@ -45,7 +46,7 @@
             <div>
                 <div class="row">
                     <div class="col m3">
-                        <h5 class="center-align">Servicios</h5> 
+                        <h5 class="center-align">Servicios</h5>
                     </div>
                     <div class="col m3">
                         <h5 class="center-align">Fecha</h5>
@@ -59,8 +60,8 @@
                 </div>
                 <div class="progress blue lighten-4">
                     <div class="determinate blue" style="width: 25%" id="wizard_progress"></div>
-                </div>                
-            </div> 
+                </div>
+            </div>
             <div class="row">
                 <div class="col s12">
                     <div class="card">
@@ -70,12 +71,12 @@
                                     <div class="row">
                                      <%
                                         for(Servicios servicio  : array){
-                                    %> 
+                                    %>
                                     <div class="col s12 m3">
                                         <div>
                                             <input type="checkbox" id="<%=servicio.getId()%>" class="servicio" value="<%=servicio.getNombre()%>" name="servicio">
                                             <label for="<%=servicio.getId()%>"><%=servicio.getNombre()%></label>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                     <%
                                         }
@@ -96,9 +97,9 @@
                                         </div>
                                         <div class="col m6 s12">
                                             <h5>Seleccione la hora</h5>
-                                            <div class="row ">                                                
+                                            <div class="row ">
                                                 <div class="col m4 " id="hora">
-                                                    <select>                    
+                                                    <select>
                                                         <option value="01">01</option>
                                                         <option value="02">02</option>
                                                         <option value="03">03</option>
@@ -106,10 +107,10 @@
                                                         <option value="05">05</option>
                                                         <option value="06">06</option>
                                                         <option value="07">07</option>
-                                                        <option value="08">08</option>                    
+                                                        <option value="08">08</option>
                                                         <option value="10">10</option>
                                                         <option value="11">11</option>
-                                                        <option value="12">12</option>                    
+                                                        <option value="12">12</option>
                                                     </select>
                                                 </div>
                                                 <div class="col m4" id="minutos">
@@ -133,7 +134,7 @@
                                                         <option value="16">16</option>
                                                         <option value="17">17</option>
                                                         <option value="18">18</option>
-                                                        <option value="19">19</option>                    
+                                                        <option value="19">19</option>
                                                         <option value="21">21</option>
                                                         <option value="22">22</option>
                                                         <option value="23">23</option>
@@ -174,13 +175,13 @@
                                                         <option value="58">58</option>
                                                         <option value="59">59</option>
                                                     </select>
-                                                </div>            
+                                                </div>
                                                 <div class="col m4" id="meridiano">
                                                     <select>
                                                         <option value="am" selected>AM</option>
                                                         <option value="pm">PM</option>
                                                     </select>
-                                                </div>                                                
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -194,7 +195,7 @@
                                         <div class="col m6 s12">
                                             <div class="input-field">
                                                 <label for="horaExtra">Horas Extras</label>
-                                                <input type="number" id="horaExtra"> 
+                                                <input type="number" id="horaExtra">
                                             </div>
                                         </div>
                                     </div>
@@ -206,9 +207,9 @@
                                            <button id="siguiente_login" class="btn waves-effect blue">Siguiente</button>
                                         </div>
                                     </div>
-                                </div>                                  
-                                    
-                                    
+                                </div>
+
+
                                 <div id="form_login" class="hide"><!--Login-->
                                     <div class="row">
                                         <h6 id="pregunta" class="center-align"><a href="/MotelsLine/registrar.jsp">¿No tienes una cuenta? Registrate</a></h6>
@@ -223,7 +224,7 @@
                                             </div>
                                             <div class="right-align">
                                                 <a href="#">¿Olvidaste tu clave?</a>
-                                            </div>                                            
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -234,23 +235,23 @@
                                            <button class="btn waves-effect blue" id="guaradar" name="action">iniciar sesion</button>
                                         </div>
                                     </div>
-                                </div>                                    
-                                    
-                                    
-                                <div id="form_resumen" class="hide"><!--Resumen--> 
+                                </div>
+
+
+                                <div id="form_resumen" class="hide"><!--Resumen-->
                                     <div  id="ok" class="hide">
                                         <div class="row">
                                            <div class="valign-wrapper">
                                               <div class="col s6 valign center">
-                                                 <img src="/MotelsLine/img/check.png"  alt="OK"/>
+                                                 <img src="<%=Routes.getUrl("img/check.png")%>"  alt="OK"/>
                                               </div>
                                               <div class="col s6">
                                                  <h3>Usted a reservado:</h3>
-                                                 <p><b>Habitación:</b> </p>                                                 
-                                                 <p><b>Servicios:</b> </p>                                                 
-                                                 <p><b>Día:</b> </p>                                                 
-                                                 <p><b>Hora:</b> </p><br>                                                
-                                                 <p><b>Gracias por reservas en MotelsLine..</b></p>                                                 
+                                                 <p><b>Habitación:</b> </p>
+                                                 <p><b>Servicios:</b> </p>
+                                                 <p><b>Día:</b> </p>
+                                                 <p><b>Hora:</b> </p><br>
+                                                 <p><b>Gracias por reservas en MotelsLine..</b></p>
                                               </div>
                                            </div>
                                         </div>
@@ -259,7 +260,7 @@
                                         <div class="row">
                                             <div class="valign-wrapper">
                                                 <div class="col s6 valign center">
-                                                    <img src="/MotelsLine/img/error.png"  alt="ERROR" />
+                                                    <img src="<%=Routes.getUrl("img/error.png")%>"  alt="ERROR" />
                                                 </div>
                                                 <div class="col s6">
                                                     <h2>Ha ocurrido un error en su reserva</h2>
@@ -270,15 +271,15 @@
                                         <div class="row">
                                               <div class="left-align" style="margin-top: 20px;">
                                                   <button class="btn waves-effect blue" id="atras_error">atras</button>
-                                              </div>    
+                                              </div>
                                         </div>
-                                    </div> 
-                                </div>   
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>            
-        </section>        
+            </div>
+        </section>
     </body>
 </html>

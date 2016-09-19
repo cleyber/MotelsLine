@@ -1,21 +1,21 @@
-<%-- 
+<%--
     Document   : modifPerfil
     Created on : 30-ago-2016, 22:18:32
     Author     : Cleyber
 --%>
-
+<%@page import="util.Routes"%>
 <%@page import="models.dao.DaoUsuarios"%>
 <%@page import="models.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    Usuario usuario = new Usuario();    
-    
+    Usuario usuario = new Usuario();
+
     if(session.getAttribute("usuario") == null) {
         response.sendRedirect("/MotelsLine/login.jsp");
     } else {
         usuario = (Usuario) session.getAttribute("usuario");
-        
-    }       
+
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -23,20 +23,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="css/materialize.min.css" rel="stylesheet" type="text/css"/>     
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <script src="js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="js/materialize.min.js" type="text/javascript"></script>
-        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
-        <script src="js/sweetalert.min.js" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
         <script>
-            $(document).ready(function(){ 
+            $(document).ready(function(){
                 $(".button-collapse").sideNav();
                 $('ul.tabs').tabs();
                 $('form').submit(function(evento) {
                     evento.preventDefault();
                 });
-                
+
                 $("#guardarDatos").click(function(){
                     $.ajax({
                        url: "ModificarUsuarioServlet",
@@ -46,7 +46,7 @@
                            apellido: $("#apellido").val(),
                            cedula: $("#cedula").val(),
                            correo: $("#correo").val(),
-                           id: <%=usuario.getId()%>                           
+                           id: <%=usuario.getId()%>
                        },
                        success: function(response){
                            swal("Registro","Datos de usuario modificados correctamente","success");
@@ -60,7 +60,7 @@
                        }
                     });
                 });
-                
+
                 $("#guardarClave").click(function(){
                     $.ajax({
                        url: "ModificarClaveUsuarioServlet",
@@ -82,7 +82,7 @@
                         }
                     });
                 });
-                
+
                 $("#eliminarCuenta").click(function(){
                     swal({
                         title: "Eliminar",
@@ -94,7 +94,7 @@
                         confirmButtonColor: "#f44336",
                         cancelButtonText: "Cancelar",
                         closeOnConfirm: false,
-                        showLoaderOnConfirm: true 
+                        showLoaderOnConfirm: true
                    }, function(){
                        $.ajax({
                             url: "EliminarUsuarioServlet",
@@ -110,8 +110,8 @@
                                 swal("Error", respuesta.responseText, "error");
                             }
                        });
-                                    
-                    }); 
+
+                    });
                 });
             });
         </script>
@@ -121,7 +121,7 @@
         <%@include file="usuario/menuUser.jsp" %>
         <main>
             <section class="container">
-                <div class="row"> 
+                <div class="row">
                     <h1 class="center-align">Modificar Perfil</h1>
                     <div class="col s12">
                         <ul class="tabs">
@@ -193,7 +193,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">                            
+                        <div class="row">
                             <div class="center-align">
                                 <div>
                                     <button class="btn large red darken-2 waves-effect btn-empl" id="eliminarCuenta" type="button">Eliminar cuenta</button>
@@ -201,7 +201,7 @@
                             </div>
                         </div>
                     </div>
-                </div>                    
+                </div>
             </section>
         </main>
     </body>
