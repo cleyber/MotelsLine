@@ -20,7 +20,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class RegistrarUsuarioServlet extends HttpServlet {
 
@@ -29,7 +29,7 @@ public class RegistrarUsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
         }
     }
 
@@ -40,28 +40,28 @@ public class RegistrarUsuarioServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-   
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
             String nombre = request.getParameter("nombre");
             String apellido = request.getParameter("apellido");
             String cedula = request.getParameter("cedula");
             String correo = request.getParameter("correo");
             String clave = request.getParameter("clave");
             String confirmar = request.getParameter("confirmar");
-            
+
             Usuario usuario = new Usuario();
             DaoUsuarios dao = new DaoUsuarios();
-            
-            if(!nombre.isEmpty() && !apellido.isEmpty() && !cedula.isEmpty() && !correo.isEmpty() && !clave.isEmpty() && !confirmar.isEmpty()){                
+
+            if(!nombre.isEmpty() && !apellido.isEmpty() && !cedula.isEmpty() && !correo.isEmpty() && !clave.isEmpty() && !confirmar.isEmpty()){
                 if(!dao.validarCorreo(correo)){
                     if(clave.equals(confirmar)){
                          usuario.setNombre(nombre);
                          usuario.setApellido(apellido);
                          usuario.setCedula(cedula);
-                         usuario.setCorreo(correo);            
+                         usuario.setCorreo(correo);
                          try {
                              usuario.setClave(Hash.sha256(clave));
                          } catch (NoSuchAlgorithmException ex) {
@@ -78,7 +78,7 @@ public class RegistrarUsuarioServlet extends HttpServlet {
                             Email para = new Email(usuario.getCorreo());
                             Content contenido = new Content("text/html", "<h1>¡Bienvenido! " + usuario.getNombre() + " </h1><h2> Eres un cliente apreciado de MotelsLine ahora puede iniciar sesión <a href='http://localhost:8080/MotelsLine/login.jsp'>aquí</a></h2>");
                             Mail mail = new Mail(desde, asunto, para, contenido);
-                            
+
                             SendGrid send = new SendGrid("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");
                             Request peticion = new Request();
                             try {
@@ -87,19 +87,19 @@ public class RegistrarUsuarioServlet extends HttpServlet {
                                 peticion.body = mail.build();
                                 Response respuesta = send.api(peticion);
                                 System.out.println(respuesta.statusCode);
-                                System.out.println(respuesta.body);                              
+                                System.out.println(respuesta.body);
                             } catch (IOException ex) {
                                 System.out.println("Error en envio de correo: " + ex);
-                            }                            
+                            }
                          }
                      }else{
                         response.setStatus(400);
-                        response.getWriter().println("Las claves deben coincidir"); 
-                     } 
+                        response.getWriter().println("Las claves deben coincidir");
+                     }
                 }else{
                     response.setStatus(400);
-                    response.getWriter().println("El correo ya existe"); 
-                }                
+                    response.getWriter().println("El correo ya existe");
+                }
             }else{
                 response.setStatus(400);
                 response.getWriter().println("Todos los campos son obligatorios");

@@ -1,9 +1,9 @@
-<%-- 
+<%--
     Document   : eliminar
     Created on : 03-jul-2016, 20:22:57
     Author     : Anderson Velez
 --%>
-
+<%@page import="util.Routes"%>
 <%@page import="models.Usuario"%>
 <%@page import="models.dao.DaoHabitaciones"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,20 +11,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    
-    if(session.getAttribute("usuario") == null) {
-        response.sendRedirect("/MotelsLine/login.jsp");
-    } else {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
-          response.sendRedirect("/MotelsLine/index.jsp");
-        }
-    }
 
-    
+   if(session.getAttribute("usuario") == null) {
+      response.sendRedirect(Routes.getUrl("login.jsp"));
+   } else {
+      Usuario usuario = (Usuario) session.getAttribute("usuario");
+      if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
+        response.sendRedirect(Routes.getUrl(""));
+      }
+   }
+
+
     ArrayList<Habitaciones> list = new ArrayList();
-    DaoHabitaciones dao = new DaoHabitaciones();    
-    
+    DaoHabitaciones dao = new DaoHabitaciones();
+
     list = dao.consultarAll();
 %>
 
@@ -34,13 +34,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="../../css/materialize.min.css" rel="stylesheet" type="text/css"/> 
-        <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../../js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="../../js/materialize.min.js" type="text/javascript"></script>
-        <script src="../../js/sweetalert.min.js" type="text/javascript"></script>
-        <link href="../../css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/font-awesome.min.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
         <title>Eliminar Habitacion</title>
         <style>
             h1 {
@@ -50,10 +50,10 @@
         </style>
         <script>
             $(document).ready(function(){
-                $(".button-collapse").sideNav(); 
+                $(".button-collapse").sideNav();
                 $(".dropdown-button").dropdown();
                 });
-            function eliminar(id){   
+            function eliminar(id){
                 swal({
                    title: "Eliminar",
                    text: "¿Esta seguro que desea eliminar la habitacion?",
@@ -90,7 +90,7 @@
             <section class="container">
                 <h1 class="center-align">Eliminar habitación</h1>
                 <article>
-                    <h4 class="center-align">Ingrese el nombre de la habitación para eliminarla.</h4> 
+                    <h4 class="center-align">Ingrese el nombre de la habitación para eliminarla.</h4>
                 </article>
                 <div class="row">
                     <form class="col m8 offset-m2 center-align" id="form-eliminar">
@@ -103,7 +103,7 @@
                                 <%
                             for(int i = 1; i < list.size(); i++ ){
                                  %>
-                                 
+
                                  <button onclick="eliminar<%= list.get(i).getId()%>"> Eliminar</button>
                                  <%
                             }
@@ -115,7 +115,7 @@
                        </div>
                     </form>
                 </div>
-            </section>            
+            </section>
         </main>
         <%@include file="../footer.jsp" %>
     </body>

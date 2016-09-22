@@ -1,8 +1,9 @@
-<%-- 
+<%--
     Document   : index
     Created on : 15-jul-2016, 20:43:14
     Author     : Anderson Vélez
 --%>
+<%@page import="util.Routes"%>
 <%@page import="models.Usuario"%>
 <%@page import="models.dao.DaoHabitaciones"%>
 <%@page import="models.Habitaciones"%>
@@ -14,37 +15,38 @@
 <%@page import="models.dao.Conexion" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%    
-    
-    if(session.getAttribute("usuario") == null) {
-        response.sendRedirect("/MotelsLine/login.jsp");
-    } else {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
-          response.sendRedirect("/MotelsLine/index.jsp");
-        }
-    }
-    
+<%
+
+   if(session.getAttribute("usuario") == null) {
+     response.sendRedirect(Routes.getUrl("login.jsp"));
+   } else {
+     Usuario usuario = (Usuario) session.getAttribute("usuario");
+     if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
+       response.sendRedirect(Routes.getUrl(""));
+     }
+   }
+
     int id = Integer.parseInt(request.getParameter("id"));
     DaoHabitaciones dao = new DaoHabitaciones();
-    Habitaciones habitacion = new Habitaciones();    
-    
+    Habitaciones habitacion = new Habitaciones();
+
     habitacion = dao.consultar(id);
 %>
 
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../../css/materialize.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../../css/sweetalert.css" rel="stylesheet" type="text/css"/>        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="../../js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="../../js/materialize.min.js" type="text/javascript"></script>
-        <script src="../../js/sweetalert.min.js" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/font-awesome.min.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
         <style>
             h1 {
             font-family: fantasy;
@@ -53,10 +55,10 @@
         </style>
         <script>
             $(document).ready(function(){
-                $(".button-collapse").sideNav(); 
+                $(".button-collapse").sideNav();
                 $(".dropdown-button").dropdown();
             });
-            
+
             function eliminarImg(id){
                 /*swal({
                    title: "Eliminar",
@@ -70,7 +72,7 @@
                    confirmButtonColor: "#f44336",
                    cancelButtonText: "Cancelar"
                 },
-                function(){                    
+                function(){
                 });*/
                 $.ajax({
                     url: "/MotelsLine/EliminarImagenHabitacionServlet",
@@ -79,7 +81,7 @@
                         id: id
                     },
                     success: function(){
-                       $("#" + id).remove(); 
+                       $("#" + id).remove();
                     }
                 });
             }
@@ -88,9 +90,9 @@
         <style>
             .imagenes img{
                 display: inline-block;
-                max-height: 150px;                
+                max-height: 150px;
             }
-            
+
         </style>
     </head>
     <body>
@@ -98,9 +100,9 @@
         <main>
             <section class="container">
                 <h1> Habitación: <%= habitacion.getNombre()%></h1>
-                <form enctype="MULTIPART/FORM-DATA" method="post" action="/MotelsLine/subirImgHabitacion.jsp?id=<%=id%>">
+                <form enctype="MULTIPART/FORM-DATA" method="post" action="<%=Routes.getUrl("subirImgHabitacion.jsp?id=")%><%=id%>">
                     <div>
-                        <input style="color: #D50000; font-family: fantasy" type="file" name="imagen" accept="image/*" multiple>                
+                        <input style="color: #D50000; font-family: fantasy" type="file" name="imagen" accept="image/*" multiple>
                     </div>
                     <br>
                     <div class="btn waves-effect">
@@ -108,15 +110,15 @@
                     </div>
                 </form>
 
-                <div class="row">                
+                <div class="row">
                     <%
                         if(habitacion.getImagenes().size() > 0){
                             for(Imagen imagen : habitacion.getImagenes()){
                     %>
                     <div class="col s12 m4">
                         <div class="card" id="<%= imagen.getId()%>">
-                            <div class="card-image">                        
-                                <img src="/MotelsLine/imgServidor/<%=imagen.getNombre()%>">
+                            <div class="card-image">
+                                <img src="<%=Routes.getUrl("imgServidor/")%><%=imagen.getNombre()%>">
                             </div>
                             <div class="card-action center-align">
                                 <a href="#" class="red-text " onclick="eliminarImg(<%=imagen.getId()%>)"><i class="fa fa-trash fa-3x "></i></a>
@@ -125,15 +127,15 @@
                     </div>
                     <%
                             }
-                        }else{   
+                        }else{
                     %>
                     <div>
-                        <img src="/MotelsLine/img/notImg.png">
+                        <img src="<%=Routes.getUrl("img/notImg.png")%>">
                     </div>
                     <%
                         }
                     %>
-                </div>            
+                </div>
             </section>
         </main>
     </body>

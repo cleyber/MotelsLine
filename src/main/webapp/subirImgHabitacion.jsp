@@ -84,6 +84,6 @@
         }
 
         dao.insertarImagenes(habitacion);
-        response.sendRedirect("<%=Routes.getUrl("admin/habitaciones/imagenes.jsp?id=" + id)%>);
+        response.sendRedirect(Routes.getUrl("admin/habitaciones/imagenes.jsp?id="+ id));
 
 %>

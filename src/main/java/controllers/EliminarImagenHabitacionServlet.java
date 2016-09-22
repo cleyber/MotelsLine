@@ -16,7 +16,7 @@ import models.dao.DaoHabitaciones;
 
 /**
  *
- * @author Sena
+ * @author MotelsLine
  */
 public class EliminarImagenHabitacionServlet extends HttpServlet {
 
@@ -37,7 +37,7 @@ public class EliminarImagenHabitacionServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EliminarImagenHabitacionServlet</title>");            
+            out.println("<title>Servlet EliminarImagenHabitacionServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EliminarImagenHabitacionServlet at " + request.getContextPath() + "</h1>");
@@ -75,7 +75,7 @@ public class EliminarImagenHabitacionServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Imagen imagen = new Imagen();
         DaoHabitaciones dao = new DaoHabitaciones();
-        
+
         imagen.setId(id);
         dao.eliminarImagen(imagen);
     }

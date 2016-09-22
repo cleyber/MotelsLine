@@ -16,7 +16,7 @@ import models.dao.DaoServicios;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class EliminarImagenServicioServlet extends HttpServlet {
 
@@ -37,7 +37,7 @@ public class EliminarImagenServicioServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EliminarImagenServicioServlet</title>");            
+            out.println("<title>Servlet EliminarImagenServicioServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EliminarImagenServicioServlet at " + request.getContextPath() + "</h1>");
@@ -75,7 +75,7 @@ public class EliminarImagenServicioServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Imagen imagen = new Imagen();
         DaoServicios dao = new DaoServicios();
-        
+
         imagen.setId(id);
         dao.eliminarImagen(imagen);
     }

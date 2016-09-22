@@ -16,7 +16,7 @@ import models.dao.DaoServicios;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class RegistrarServicioServlet extends HttpServlet {
 
@@ -29,20 +29,20 @@ public class RegistrarServicioServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
 
-   
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-   
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         double precio = 0;
         Servicios servicio = new Servicios();
         DaoServicios dao = new DaoServicios();
@@ -51,8 +51,8 @@ public class RegistrarServicioServlet extends HttpServlet {
             precio = Double.parseDouble(request.getParameter("precio"));
         }
         String descripcion = request.getParameter("descripcion");
-        
-        if(!nombre.isEmpty() && precio > 0 && !descripcion.isEmpty()){        
+
+        if(!nombre.isEmpty() && precio > 0 && !descripcion.isEmpty()){
             servicio.setNombre(nombre);
             servicio.setPrecio(precio);
             servicio.setDescripcion(descripcion);
@@ -61,18 +61,18 @@ public class RegistrarServicioServlet extends HttpServlet {
                 response.setStatus(500);
                 response.getWriter().println("No se registro el servicio");
             }else{
-                response.getWriter().print(id); 
+                response.getWriter().print(id);
             }
         }else{
             response.setStatus(400);
             response.getWriter().println("Todos los campos son obligatorios");
         }
-        
-        
-        
+
+
+
     }
 
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";

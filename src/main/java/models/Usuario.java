@@ -7,7 +7,7 @@ package models;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class Usuario {
     public static final String CLIENTE = "cliente";
@@ -17,7 +17,7 @@ public class Usuario {
     private String apellido;
     private String cedula;
     private String clave;
-    private String correo;    
+    private String correo;
     private String rol;
     private int id;
 
@@ -80,13 +80,13 @@ public class Usuario {
     public void setRol(String rol) {
         this.rol = rol;
     }
-    
+
     public void setId(int id){
         this.id = id;
     }
-    
+
     public int getId(){
         return id;
-    }    
-    
+    }
+
 }

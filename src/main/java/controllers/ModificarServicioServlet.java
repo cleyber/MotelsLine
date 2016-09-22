@@ -16,28 +16,28 @@ import models.dao.DaoServicios;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class ModificarServicioServlet extends HttpServlet {
 
-   
-    
 
-   
+
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         DaoServicios dao = new DaoServicios();
         Servicios servicio = new Servicios();
-        
+
         String nombre = request.getParameter("nombre");
         double precio = 0;
         if(!request.getParameter("precio").isEmpty()){
@@ -45,7 +45,7 @@ public class ModificarServicioServlet extends HttpServlet {
         }
         String descripcion = request.getParameter("descripcion");
         int id = Integer.parseInt(request.getParameter("id"));
-        
+
         if(!nombre.isEmpty() && precio > 0 && !descripcion.isEmpty() && id > 0){
             servicio.setNombre(nombre);
             servicio.setPrecio(precio);
@@ -53,10 +53,10 @@ public class ModificarServicioServlet extends HttpServlet {
             servicio.setId(id);
             int modificado = dao.modificar(servicio);
         }else{
-            
+
         }
-        
-        
+
+
     }
 
     /**

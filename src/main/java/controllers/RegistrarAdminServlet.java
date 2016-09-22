@@ -23,34 +23,34 @@ import util.Hash;
 
 /**
  *
- * @author Anderson Velez
+ * @author MotelsLine
  */
 public class RegistrarAdminServlet extends HttpServlet {
 
-    
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-   
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
            JSONObject adminJson = new JSONObject(request.getParameter("admin"));
            JSONObject motelJson = new JSONObject(request.getParameter("motel"));
-           
+
            Usuario admin = new Usuario();
            Motel motel = new Motel();
-           
+
            motel.setNombre(motelJson.getString("nombre"));
            motel.setDireccion(motelJson.getString("direccion"));
            motel.setCorreo(motelJson.getString("correo"));
            motel.setTelefono(motelJson.getString("telefono"));
-           
+
             String clave = adminJson.getString("clave");
             String confirmar = adminJson.getString("confirmar");
             admin.setNombre(adminJson.getString("nombre"));
@@ -59,18 +59,18 @@ public class RegistrarAdminServlet extends HttpServlet {
             admin.setCorreo(adminJson.getString("correo"));
             admin.setRol(Usuario.ADMINISTRADOR);
            System.out.println("asfsadasf" + motelJson.toString());
-           
+
            if(!clave.isEmpty() && !confirmar.isEmpty() && !admin.getNombre().isEmpty() && !admin.getApellido().isEmpty() &&
                    !admin.getCedula().isEmpty() && !admin.getCorreo().isEmpty() && !motel.getNombre().isEmpty() && !motel.getDireccion().isEmpty() &&
                    !motel.getCorreo().isEmpty() && !motel.getTelefono().isEmpty()){
-                   
+
                 DaoMotel daoMotel = new DaoMotel();
                 int guardado = daoMotel.registrar(motel);
                 if(guardado == 00){
                     response.setStatus(500);
                     response.getWriter().println("Error en el servidor");
-                }else{               
-                    if(clave.equals(confirmar)){                
+                }else{
+                    if(clave.equals(confirmar)){
                         try {
                             admin.setClave(Hash.sha256(clave));
                         } catch (NoSuchAlgorithmException ex) {
@@ -82,18 +82,18 @@ public class RegistrarAdminServlet extends HttpServlet {
                             response.setStatus(500);
                             response.getWriter().println("Error en el servidor");
                         }
-                   }else{           
+                   }else{
                        response.setStatus(400);
                        response.getWriter().println("Error en clave");
                    }
 
-                }            
+                }
             }else{
                response.setStatus(400);
                response.getWriter().println("Todos los campos son obligatorios");
             }
-           
-           
+
+
     }
 
     /**

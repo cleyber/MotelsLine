@@ -1,7 +1,7 @@
 <%--
     Document   : habitacionInfo
     Created on : 25-ago-2016, 18:37:42
-    Author     : Cleyber
+    Author     : MotelsLine
 --%>
 <%@page import="util.Routes"%>
 <%@page import="models.dao.DaoHabitaciones"%>

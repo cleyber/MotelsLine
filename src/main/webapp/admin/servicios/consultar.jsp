@@ -1,9 +1,9 @@
-<%-- 
+<%--
     Document   : consulta
     Created on : 30-jun-2016, 0:08:01
     Author     : Cleyber
 --%>
-
+<%@page import="util.Routes"%>
 <%@page import="models.Usuario"%>
 <%@page import="models.dao.DaoServicios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,40 +12,40 @@
 <%@page  import="java.util.List"%>
 
 <%
-    
-    if(session.getAttribute("usuario") == null) {
-        response.sendRedirect("/MotelsLine/login.jsp");
-    } else {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
-            response.sendRedirect("/MotelsLine/index.jsp");
-        }
-    }
-    
+
+   if(session.getAttribute("usuario") == null) {
+      response.sendRedirect(Routes.getUrl("login.jsp"));
+   } else {
+      Usuario usuario = (Usuario) session.getAttribute("usuario");
+      if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
+        response.sendRedirect(Routes.getUrl(""));
+      }
+   }
+
     DaoServicios dao = new DaoServicios();
     ArrayList<Servicios> list = new ArrayList();
-    
+
     list = dao.consultarAll();
-    
+
     String pagina = request.getParameter("pagina");
     int numero = 1;
-    
-    
+
+
     if(pagina != null){
       numero = Integer.parseInt(pagina);
     }
-        
+
 
      final int REGISTROS = 11;
     List<Servicios> lista;
     //= list.subList((numero - 1) * 11, numero * 11);
-    boolean ultimo = false; 
-    
-    if(numero * REGISTROS  > list.size()){   
+    boolean ultimo = false;
+
+    if(numero * REGISTROS  > list.size()){
        ultimo = true;
-       lista = list.subList((numero -1) * REGISTROS, list.size()); 
+       lista = list.subList((numero -1) * REGISTROS, list.size());
    }else{
-       lista = list.subList((numero -1)* 11, numero* REGISTROS);                    
+       lista = list.subList((numero -1)* 11, numero* REGISTROS);
 
    }
 %>
@@ -54,12 +54,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="../../css/materialize.min.css" rel="stylesheet" type="text/css"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">        
-        <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../../js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="../../js/materialize.min.js" type="text/javascript"></script>        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/font-awesome.min.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <title>Servicios</title>
         <script>
             $(document).ready(function(){
@@ -68,9 +68,9 @@
             });
         </script>
     </head>
-    <body>        
-        <%@include file="../menu.jsp" %>            
-        <main>            
+    <body>
+        <%@include file="../menu.jsp" %>
+        <main>
             <div class="container">
                 <h1>Servicios</h1>
             </div>
@@ -80,19 +80,19 @@
                          <tr>
                              <th>Nombre</th>
                              <th>Precio</th>
-                             <th>Descripcion</th>                                             
+                             <th>Descripcion</th>
                          </tr>
                      </thead>
                      <tbody>
                          <%
-                            for(int i = 0; i < lista.size(); i++){                       
-                         %>                
+                            for(int i = 0; i < lista.size(); i++){
+                         %>
                          <tr>
                              <!-- <%= lista.get(i).getImagenes().toString()%>-->
                              <td><%=lista.get(i).getNombre()%></td>
                              <td><%=lista.get(i).getPrecio()%></td>
-                             <td><%=lista.get(i).getDescripcion()%></td>                                                               
-                         </tr>                
+                             <td><%=lista.get(i).getDescripcion()%></td>
+                         </tr>
                          <%
                              }
                          %>
@@ -117,6 +117,6 @@
                      %>
             </div>
         </main>
-    </body>    
+    </body>
     <%@include file="../footer.jsp" %>
 </html>

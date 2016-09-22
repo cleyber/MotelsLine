@@ -3,28 +3,26 @@
     Created on : 20-ago-2016, 20:57:48
     Author     : Cleyber
 --%>
-
+<%@page import="util.Routes"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="models.dao.DaoMotel"%>
 <%
-    
-    
-    /*if(DaoMotel.getMotel() != null){
-        response.sendRedirect("/MotelsLine/login.jsp");
-    }*/
+    if(DaoMotel.getMotel() != null){
+        response.sendRedirect(Routes.getUrl("login.jsp"));
+    }
 %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <link href="../css/materialize.min.css" rel="stylesheet" type="text/css"/>
-      <script src="../js/jquery-3.0.0.min.js" type="text/javascript"></script>
-      <script src="../js/materialize.min.js" type="text/javascript"></script>
-      <script src="../js/admin/registrar.js" type="text/javascript"></script>
+      <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+      <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+      <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+      <script src="<%=Routes.getUrl("js/admin/registrar.js")%>" type="text/javascript"></script>
 
-      <title>Formulario</title>
+      <title>Registro</title>
    </head>
    <body>
       <section class="container">
@@ -122,7 +120,7 @@
                                  <div class="right-align col s6">
                                     <button id="guardar" class="btn waves-effect blue">Guardar</button>
                                  </div>
-                              </div>  
+                              </div>
                            </div>
 
                            <div id="form_finalizar" class="hide">
@@ -156,10 +154,10 @@
                                   <div class="row">
                                        <div class="left-align" style="margin-top: 20px;">
                                            <button class="btn waves-effect blue" id="atras_error">atras</button>
-                                       </div>    
+                                       </div>
                                    </div>
-                              </div>                
-                           </div>                           
+                              </div>
+                           </div>
                            <div id="preloader" class="center-align hide">
                               <div class="preloader-wrapper big active">
                                  <div class="spinner-layer spinner-blue-only">
@@ -172,7 +170,7 @@
                                     </div>
                                  </div>
                               </div>
-                           </div> 
+                           </div>
                         </div> <!--card-content-->
                     </div> <!--  card-->
                 </div> <!-- col s12 card-->

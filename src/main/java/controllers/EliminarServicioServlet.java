@@ -15,7 +15,7 @@ import models.dao.DaoServicios;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class EliminarServicioServlet extends HttpServlet {
 

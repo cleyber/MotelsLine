@@ -48,10 +48,10 @@
                       <label for="clave">Clave</label>
                       <input type="password" id="clave" name="clave">
                     </div>
-                    <div class="right-align">
+                    <div class="right-align" id="claveOlvidada">
                       <a href="#">¿Olvidaste tu clave?</a>
                     </div>
-                    <div>
+                    <div class="center-align">
                       <button class="btn waves-effect waves-light" id="guaradar" type="submit" name="action">iniciar sesion</button>
                     </div>
                   </form>
@@ -63,6 +63,5 @@
       </div>
     </div>
    </main>
-    <%@include file="admin/footer.jsp" %>
   </body>
 </html>

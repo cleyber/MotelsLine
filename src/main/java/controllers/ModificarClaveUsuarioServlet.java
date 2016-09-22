@@ -20,7 +20,7 @@ import util.Hash;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class ModificarClaveUsuarioServlet extends HttpServlet {
 
@@ -37,35 +37,35 @@ public class ModificarClaveUsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
         }
     }
 
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String claveActual = request.getParameter("claveActual");
         String claveNueva = request.getParameter("claveNueva");
         String confirmar = request.getParameter("confirmar");
         int id = Integer.parseInt(request.getParameter("id"));
-        
+
         DaoUsuarios dao = new DaoUsuarios();
         Usuario usuario = dao.consultar(id);
         if(!claveActual.isEmpty() && !claveNueva.isEmpty() && !confirmar.isEmpty()){
             try {
                 if(usuario.getClave().equals(Hash.sha256(claveActual))){
-                    if(claveNueva.equals(confirmar)){                    
-                        usuario.setClave(Hash.sha256(claveNueva));                        
-                        
+                    if(claveNueva.equals(confirmar)){
+                        usuario.setClave(Hash.sha256(claveNueva));
+
                         int modificado = dao.modificar(usuario);
                         if(modificado == 0){
                             response.setStatus(500);
@@ -88,7 +88,7 @@ public class ModificarClaveUsuarioServlet extends HttpServlet {
         }
     }
 
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";

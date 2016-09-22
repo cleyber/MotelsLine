@@ -1,23 +1,10 @@
-<%-- 
+<%--
     Document   : reserva
     Created on : 14-ago-2016, 15:46:32
     Author     : Cleyber
 --%>
-
+<%@page import="util.Routes"%>
 <%@page import="models.Usuario"%>
-
-<%
-    if(session.getAttribute("usuario") == null) {
-        response.sendRedirect("/MotelsLine/login.jsp");
-    } else {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if(!usuario.getRol().equals(Usuario.EMPLEADO)) {
-          response.sendRedirect("/MotelsLine/index.jsp");
-        }
-    }
-%>
-
-
 <%@page import="models.dao.DaoUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page  import="models.Usuario"%>
@@ -25,30 +12,39 @@
 <%@page  import="java.util.List"%>
 
 <%
+   if(session.getAttribute("usuario") == null) {
+      response.sendRedirect(Routes.getUrl("login.jsp"));
+   } else {
+       Usuario usuario = (Usuario) session.getAttribute("usuario");
+       if(!usuario.getRol().equals(Usuario.EMPLEADO)) {
+         response.sendRedirect(Routes.getUrl(""));
+      }
+   }
+
     DaoUsuarios dao = new DaoUsuarios();
     ArrayList<Usuario> list = new ArrayList();
-    
+
     list = dao.consultarAll();
-    
+
     String pagina = request.getParameter("pagina");
     int numero = 1;
-    
-    
+
+
     if(pagina != null){
       numero = Integer.parseInt(pagina);
     }
-        
+
 
      final int REGISTROS = 11;
     List<Usuario> lista;
     //= list.subList((numero - 1) * 11, numero * 11);
-    boolean ultimo = false; 
-    
-    if(numero * REGISTROS  > list.size()){   
+    boolean ultimo = false;
+
+    if(numero * REGISTROS  > list.size()){
        ultimo = true;
-       lista = list.subList((numero -1) * REGISTROS, list.size()); 
+       lista = list.subList((numero -1) * REGISTROS, list.size());
    }else{
-       lista = list.subList((numero -1)* 11, numero* REGISTROS);                    
+       lista = list.subList((numero -1)* 11, numero* REGISTROS);
 
    }
 %>
@@ -58,12 +54,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="../css/materialize.min.css" rel="stylesheet" type="text/css"/>     
+        <link href="../css/materialize.min.css" rel="stylesheet" type="text/css"/>
         <script src="../js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="../js/materialize.min.js" type="text/javascript"></script>        
+        <script src="../js/materialize.min.js" type="text/javascript"></script>
         <title>Usuarios</title>
     </head>
-    <body>        
+    <body>
         <header>
             <nav>
                 <div class="nav-wrapper red">
@@ -77,9 +73,9 @@
                     <li><a href="login.jsp">Salir</a></li>
                   </ul>
                 </div>
-            </nav>    
-        </header>          
-        <main>            
+            </nav>
+        </header>
+        <main>
             <div class="container">
                 <h1>Usuarios</h1>
             </div>
@@ -89,22 +85,22 @@
                          <tr>
                              <th>Nombre</th>
                              <th>Apellido</th>
-                             <th>Cedula</th>                                             
-                             <th>Correo</th>                                             
-                             <th>Rol</th>                                            
+                             <th>Cedula</th>
+                             <th>Correo</th>
+                             <th>Rol</th>
                          </tr>
                      </thead>
                      <tbody>
                          <%
-                            for(int i = 0; i < lista.size(); i++){                       
-                         %>                
-                         <tr>                             
+                            for(int i = 0; i < lista.size(); i++){
+                         %>
+                         <tr>
                              <td><%=lista.get(i).getNombre()%></td>
                              <td><%=lista.get(i).getApellido()%></td>
-                             <td><%=lista.get(i).getCedula()%></td>                                                               
-                             <td><%=lista.get(i).getCorreo()%></td>                                                               
-                             <td><%=lista.get(i).getRol()%></td>                                                               
-                         </tr>                
+                             <td><%=lista.get(i).getCedula()%></td>
+                             <td><%=lista.get(i).getCorreo()%></td>
+                             <td><%=lista.get(i).getRol()%></td>
+                         </tr>
                          <%
                              }
                          %>
@@ -129,6 +125,6 @@
                      %>
             </div>
         </main>
-    </body>    
-    
+    </body>
+
 </html>

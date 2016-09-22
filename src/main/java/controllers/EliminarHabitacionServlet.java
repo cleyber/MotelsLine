@@ -14,24 +14,24 @@ import models.dao.DaoHabitaciones;
 
 /**
  *
- * @author Sena
+ * @author MotelsLine
  */
 public class EliminarHabitacionServlet extends HttpServlet {
 
-   
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
 
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        DaoHabitaciones dao = new DaoHabitaciones();
-        
+
         int id = Integer.parseInt(request.getParameter("id"));
-        int eliminado = dao.eliminar(id); 
+        int eliminado = dao.eliminar(id);
         if(eliminado == 0){
             response.setStatus(500);
             response.getWriter().println("No se ha podido eliminar la habitacion");

@@ -15,7 +15,7 @@ import models.dao.DaoHabitaciones;
 
 /**
  *
- * @author Anderson Velez
+ * @author MotelsLine
  */
 public class RegistrarHabitacionServlet extends HttpServlet {
 
@@ -40,10 +40,10 @@ public class RegistrarHabitacionServlet extends HttpServlet {
         double personaAdicional = 0;
         Habitaciones habitacion = new Habitaciones();
         DaoHabitaciones dao = new DaoHabitaciones();
-        
+
         String nombre = request.getParameter("nombre");
         int cantidad = Integer.parseInt(request.getParameter("cantidad"));
-        
+
         if(!request.getParameter("precio").isEmpty()){
             precio = Double.parseDouble(request.getParameter("precio"));
         }
@@ -53,11 +53,11 @@ public class RegistrarHabitacionServlet extends HttpServlet {
         if(!request.getParameter("personaAdicional").isEmpty()){
             personaAdicional = Double.parseDouble(request.getParameter("personaAdicional"));
         }
-        
+
         String descripcion = request.getParameter("descripcion");
         int cantidadHoras = Integer.parseInt(request.getParameter("cantidadHoras"));
         if(!dao.validarNHabitacion(cantidad)){
-        if(!nombre.isEmpty() && cantidad > 0 && !descripcion.isEmpty() && precio > 0 && cantidadHoras > 0 && horaAdicional > 0 && personaAdicional > 0){        
+        if(!nombre.isEmpty() && cantidad > 0 && !descripcion.isEmpty() && precio > 0 && cantidadHoras > 0 && horaAdicional > 0 && personaAdicional > 0){
             habitacion.setNombre(nombre);
             habitacion.setCantidad(cantidad);
             habitacion.setDescripcion(descripcion);
@@ -65,13 +65,13 @@ public class RegistrarHabitacionServlet extends HttpServlet {
             habitacion.setCantidadHoras(cantidadHoras);
             habitacion.setHoraAdicional(horaAdicional);
             habitacion.setPersonaAdicional(personaAdicional);
-            
+
             int id = dao.insertar(habitacion);
             if(id == 0){
                 response.setStatus(500);
                 response.getWriter().println("No se registro la habitacion");
             }else{
-                response.getWriter().print(id); 
+                response.getWriter().print(id);
             }
         }else{
             response.setStatus(400);

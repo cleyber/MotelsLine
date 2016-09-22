@@ -74,6 +74,6 @@
         }
 
         dao.insertarImagenes(servicio);
-        response.sendRedirect("<%=Routes.getUrl("admin/servicios/imagenes.jsp?imagen=" + id)%>);
+        response.sendRedirect(Routes.getUrl("admin/servicios/imagenes.jsp?imagen=" + id));
 
 %>

@@ -7,7 +7,7 @@ package models;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class Motel {
     private int id;
@@ -15,10 +15,10 @@ public class Motel {
     private String direccion;
     private String correo;
     private String telefono;
-    
-    public Motel(){    
+
+    public Motel(){
     }
-    
+
     public Motel(int id, String nombre, String direccion, String correo, String telefono){
         this.id = id;
         this.nombre = nombre;
@@ -26,43 +26,43 @@ public class Motel {
         this.correo = correo;
         this.telefono = telefono;
     }
-    
+
     public void setId(int id){
         this.id = id;
     }
-    
+
     public int getId(){
         return id;
     }
-    
+
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-    
+
     public String getNombre(){
         return nombre;
     }
-    
+
     public void setDireccion(String direccion){
         this.direccion = direccion;
     }
-    
+
     public String getDireccion(){
         return direccion;
     }
-    
+
     public void setCorreo(String correo){
         this.correo = correo;
     }
-    
+
     public String getCorreo(){
         return correo;
     }
-    
+
     public void setTelefono(String telefono){
         this.telefono = telefono;
     }
-    
+
     public String getTelefono(){
         return telefono;
     }

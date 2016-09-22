@@ -16,15 +16,15 @@ import models.dao.DaoHabitaciones;
 
 /**
  *
- * @author Sena
+ * @author MotelsLine
  */
 public class ActualizarHabitacionServlet extends HttpServlet {
 
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ActualizarHabitacionServlet extends HttpServlet {
             throws ServletException, IOException {
         DaoHabitaciones dao = new DaoHabitaciones();
         Habitaciones habitacion = new Habitaciones();
-        
+
         String nombre = request.getParameter("nombre");
         int cantidad = Integer.parseInt(request.getParameter("cantidad"));
         double precio = 0;
@@ -50,7 +50,7 @@ public class ActualizarHabitacionServlet extends HttpServlet {
         String descripcion = request.getParameter("descripcion");
         int cantidadHoras = Integer.parseInt(request.getParameter("cantidadHoras"));
         int id = Integer.parseInt(request.getParameter("id"));
-        
+
         if(!nombre.isEmpty() && cantidad > 0 && !descripcion.isEmpty() && precio > 0 && cantidadHoras > 0 && horaAdicional > 0 && personaAdicional > 0 && id > 0){
             habitacion.setNombre(nombre);
             habitacion.setCantidad(cantidad);
@@ -61,8 +61,13 @@ public class ActualizarHabitacionServlet extends HttpServlet {
             habitacion.setPersonaAdicional(personaAdicional);
             habitacion.setId(id);
             int modificado = dao.modificar(habitacion);
+            if(modificado == 0){
+               response.setStatus(500);
+               response.getWriter().println("Error: no se ha podido modificar la habitación");
+            }
         }else{
-            
+            response.setStatus(400);
+            response.getWriter().println("Todos los campos son obligatorios");
         }
     }
 

@@ -9,22 +9,20 @@
 <%@page import="models.Servicios"%>
 <%@page import="models.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
-   /* if(session.getAttribute("usuario") == null) {
-        response.sendRedirect("/MotelsLine/login.jsp");
+   boolean logged;
+   if(session.getAttribute("usuario") == null) {
+     logged = false;
     } else {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if(!usuario.getRol().equals(Usuario.CLIENTE)) {
-          response.sendRedirect("/MotelsLine/index.jsp");
-        }
-    }*/
+      logged = true;
+    }
 
     Servicios servicios = new Servicios();
     DaoServicios dao = new DaoServicios();
 
     ArrayList<Servicios> array = new ArrayList();
     array = dao.consultarAll();
-
 %>
 <!DOCTYPE html>
 <html>
@@ -35,9 +33,16 @@
       <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
       <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
       <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+      <script src="<%=Routes.getUrl("js/usuario/reservar.js")%>" type="text/javascript"></script>
       <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
       <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
       <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
+
+      <script>
+
+            var logged = <%=logged%>;
+
+      </script>
 
     </head>
         <%@include file="menuUser.jsp" %>
@@ -203,39 +208,47 @@
                                         <div class="left-align col s6">
                                            <button id="fecha_atras" class="btn waves-effect blue">Atras</button>
                                         </div>
+                                        <% if(logged){ %>
+                                        <div class="right-align col s6">
+                                          <button id="guardar_reserva" class="btn waves-effect blue">Guardar</button>
+                                       </div>
+                                       <% }else{ %>
                                         <div class="right-align col s6">
                                            <button id="siguiente_login" class="btn waves-effect blue">Siguiente</button>
                                         </div>
+                                       <% } %>
                                     </div>
                                 </div>
 
-
-                                <div id="form_login" class="hide"><!--Login-->
-                                    <div class="row">
-                                        <h6 id="pregunta" class="center-align"><a href="/MotelsLine/registrar.jsp">¿No tienes una cuenta? Registrate</a></h6>
-                                        <div class="col s12 col m8 offset-m2">
-                                            <div class="input-field">
+                                 <form action="loginServlet" method="post"><!--Login-->
+                                    <div id="form_login" class="hide"><!--Login-->
+                                       <div class="row">
+                                          <h4 class="center-align">Iniciar sesión</h4>
+                                          <h6 id="pregunta" class="center-align"><a href="<%=Routes.getUrl("registrar.jsp")%>">¿No tienes una cuenta? Registrate</a></h6>
+                                          <div class="col s12 col m8 offset-m2">
+                                             <div class="input-field">
                                                 <label for="correo">Correo</label>
                                                 <input type="email" id="correo" name="correo">
-                                            </div>
-                                            <div class="input-field">
+                                             </div>
+                                             <div class="input-field">
                                                 <label for="clave">Clave</label>
                                                 <input type="password" id="clave" name="clave">
-                                            </div>
-                                            <div class="right-align">
+                                             </div>
+                                             <div class="right-align">
                                                 <a href="#">¿Olvidaste tu clave?</a>
-                                            </div>
-                                        </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="left-align col s6">
+                                             <button id="login_atras" class="btn waves-effect blue">Atras</button>
+                                          </div>
+                                          <div class="right-align col s6">
+                                             <button class="btn waves-effect blue" name="action" type="submit">iniciar sesion</button>
+                                          </div>
+                                       </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="left-align col s6">
-                                           <button id="login_atras" class="btn waves-effect blue">Atras</button>
-                                        </div>
-                                        <div class="right-align col s6">
-                                           <button class="btn waves-effect blue" id="guaradar" name="action">iniciar sesion</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                 </form>
 
 
                                 <div id="form_resumen" class="hide"><!--Resumen-->

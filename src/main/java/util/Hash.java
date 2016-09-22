@@ -10,10 +10,10 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class Hash {
-    
+
     public static String sha256(String input) throws NoSuchAlgorithmException{
         MessageDigest mDigest = MessageDigest.getInstance("SHA-256");
         byte[] result = mDigest.digest(input.getBytes());

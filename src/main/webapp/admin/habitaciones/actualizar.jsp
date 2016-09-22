@@ -1,30 +1,30 @@
-<%-- 
+<%--
     Document   : modificar
     Created on : 02-jul-2016, 18:36:38
     Author     : Anderson Velez
 --%>
-
+<%@page import="util.Routes"%>
 <%@page import="models.Usuario"%>
 <%@page import="models.Habitaciones"%>
 <%@page import="models.dao.DaoHabitaciones"%>
 <%@page import="models.Servicios"%>
 <%@page import="models.dao.DaoServicios"%>
 <%
-    
-    if(session.getAttribute("usuario") == null) {
-        response.sendRedirect("/MotelsLine/login.jsp");
-    } else {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
-          response.sendRedirect("/MotelsLine/index.jsp");
-        }
-    }
 
-    
+   if(session.getAttribute("usuario") == null) {
+      response.sendRedirect(Routes.getUrl("login.jsp"));
+   } else {
+      Usuario usuario = (Usuario) session.getAttribute("usuario");
+      if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
+        response.sendRedirect(Routes.getUrl(""));
+      }
+   }
+
+
     int id = Integer.parseInt(request.getParameter("habitacion"));
     DaoHabitaciones dao = new DaoHabitaciones();
-    Habitaciones habitacion =  dao.consultar(id);    
-    
+    Habitaciones habitacion =  dao.consultar(id);
+
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -34,24 +34,24 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../../css/materialize.min.css" rel="stylesheet" type="text/css"/>    
-        <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../../js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="../../js/materialize.min.js" type="text/javascript"></script>
-        <script src="../../js/sweetalert.min.js" type="text/javascript"></script>
-        <link href="../../css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/font-awesome.min.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
         <script>
             $(document).ready(function(){
-                $(".menu-modificar").addClass("active"); 
+                $(".menu-modificar").addClass("active");
                 $(".button-collapse").sideNav();
                 $(".dropdown-button").dropdown();
-                
+
                 $('form').submit(function(evento) {
                  evento.preventDefault();
                 });
-                
-                
+
+
                 $("#guardar").click(function(){
                     $.ajax({
                         url: "../../ActualizarHabitacionServlet",
@@ -67,7 +67,7 @@
                             id: <%=id%>
                         },
                         success: function(response){
-                            swal("Modificado", "Se actualizo!", "success"); 
+                            swal("Modificado", "Se actualizo!", "success");
                             $("#nombre").val("");
                             $("#cantidad").val("");
                             $("#descripcion").val("");
@@ -81,7 +81,7 @@
                             $("#nombre").val("");
                             $("#precio").val("");
                             $("#descripcion").val("");
-                        }                        
+                        }
                     });
                 });
             });
@@ -91,10 +91,10 @@
     <body>
         <%@include file="../menu.jsp" %>
         <main>
-            <section class="container">                
+            <section class="container">
                 <h1 class="center-align">Modificar habitacion</h1>
                     <div class="row">
-                        
+
                         <form class="col m8 offset-m2 center-align">
                             <div class="input-field">
                                 <label for="nombre">Nombre</label>
@@ -126,20 +126,19 @@
                             </div>
                             <div class="row">
                                 <div class="col m4">
-                                    <a href="/MotelsLine/admin/habitaciones/imagenes.jsp?id=<%=id%>" class="btn waves-effect blue">Imágenes</a>
+                                    <a href="<%=Routes.getUrl("admin/habitaciones/imagenes.jsp?id=")%><%=id%>" class="btn waves-effect blue">Imágenes</a>
                                 </div>
                                 <div class="col m4">
                                     <button class="btn waves-effect" id="guardar">Guardar</button>
                                 </div>
                                 <div class="col m4">
-                                    <a href="/MotelsLine/admin" id="cancelar" class="btn red waves-effect">Cancelar</a> 
+                                    <a href="/MotelsLine/admin" id="cancelar" class="btn red waves-effect">Cancelar</a>
                                 </div>
                             </div>
-                        </form>                    
-                    </div>                
-            </section> 
+                        </form>
+                    </div>
+            </section>
         </main>
         <%@include file="../footer.jsp" %>
     </body>
 </html>
-

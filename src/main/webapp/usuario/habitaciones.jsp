@@ -144,6 +144,6 @@
 
             </section>
         </main>
-                <%@include file="../admin/footer.jsp"%>
+         <%@include file="../admin/footer.jsp"%>
     </body>
 </html>

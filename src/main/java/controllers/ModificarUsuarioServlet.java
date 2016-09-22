@@ -16,7 +16,7 @@ import models.dao.DaoUsuarios;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class ModificarUsuarioServlet extends HttpServlet {
 
@@ -33,38 +33,38 @@ public class ModificarUsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            
+
+
         }
     }
 
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         String cedula = request.getParameter("cedula");
         String correo = request.getParameter("correo");
         int id = Integer.parseInt(request.getParameter("id"));
-        
-        
+
+
         DaoUsuarios dao = new DaoUsuarios();
         Usuario usuario = dao.consultar(id);
-        
+
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setCedula(cedula);
-        usuario.setCorreo(correo);        
-        
+        usuario.setCorreo(correo);
+
         int modificado = dao.modificar(usuario);
         if(modificado == 0){
             response.setStatus(500);
@@ -72,7 +72,7 @@ public class ModificarUsuarioServlet extends HttpServlet {
         }
     }
 
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";

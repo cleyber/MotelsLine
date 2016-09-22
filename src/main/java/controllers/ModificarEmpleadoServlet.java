@@ -18,7 +18,7 @@ import util.Hash;
 
 /**
  *
- * @author Cleyber
+ * @author MotelsLine
  */
 public class ModificarEmpleadoServlet extends HttpServlet {
 
@@ -35,39 +35,39 @@ public class ModificarEmpleadoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
         }
     }
 
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-   
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Usuario usuario = new Usuario();
         DaoUsuarios dao = new DaoUsuarios();
-        
+
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         String cedula = request.getParameter("cedula");
         String correo = request.getParameter("correo");
         String clave = request.getParameter("clave");
         String confClave = request.getParameter("confClave");
-        
+
         if(!nombre.isEmpty() && !apellido.isEmpty() && !cedula.isEmpty() && !correo.isEmpty() && !clave.isEmpty() && !confClave.isEmpty()){
-            if(dao.validarCorreo(correo)){            
+            if(dao.validarCorreo(correo)){
                if(clave.equals(confClave)){
                     usuario.setNombre(nombre);
                     usuario.setApellido(apellido);
                     usuario.setCedula(cedula);
-                    usuario.setCorreo(correo);            
+                    usuario.setCorreo(correo);
                     try {
                         usuario.setClave(Hash.sha256(clave));
                     } catch (NoSuchAlgorithmException ex) {
@@ -81,13 +81,13 @@ public class ModificarEmpleadoServlet extends HttpServlet {
                     }
                 }else{
                    response.setStatus(400);
-                   response.getWriter().println("Las claves deben coincidir"); 
-                } 
+                   response.getWriter().println("Las claves deben coincidir");
+                }
             }else{
                 response.setStatus(400);
-                response.getWriter().println("El correo no existe"); 
+                response.getWriter().println("El correo no existe");
             }
-        
+
         }else{
             response.setStatus(400);
             response.getWriter().println("Todos los campos son obligatorios");

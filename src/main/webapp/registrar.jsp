@@ -57,7 +57,6 @@
     </head>
 
     <body bgcolor="#4183d7">
-        <%@include file="usuario/menuUser.jsp" %>
         <main>
             <div id="wrapper" class="valign-wrapper">
                 <div class="valign">
@@ -75,7 +74,7 @@
                                             <input type="text" id="nombre">
                                         </div>
                                         <div class="input-field">
-                                            <label for="apellidos">Apellido</label>
+                                            <label for="apellido">Apellido</label>
                                             <input type="text" id="apellido">
                                         </div>
                                         <div class="input-field">
@@ -94,7 +93,7 @@
                                             <label for="cclave">Confirmar clave</label>
                                             <input type="password" id="cclave">
                                         </div>
-                                        <div>
+                                        <div class="center-align">
                                             <button class="btn waves-effect waves-light" id="guardar">Registrarse</button>
                                         </div>
                                     </form>
@@ -106,6 +105,5 @@
                 </div>
             </div>
         </main>
-        <%@include file="admin/footer.jsp" %>
     </body>
 </html>

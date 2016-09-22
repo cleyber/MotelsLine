@@ -13,5 +13,6 @@ libraryDependencies++=Seq(
    "com.sendgrid" % "java-http-client" % "2.3.4",
    "com.sendgrid" % "sendgrid-java" % "3.0.9",
    "commons-fileupload" % "commons-fileupload" % "1.3.2",
-   "org.apache.commons" % "commons-io" % "1.3.2"
+   "org.apache.commons" % "commons-io" % "1.3.2",
+   "com.typesafe" % "config" % "1.3.0"
 )

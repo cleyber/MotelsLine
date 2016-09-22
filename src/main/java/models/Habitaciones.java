@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Anderson Velez
+ * @author MotelsLine
  */
 public class Habitaciones {
     private int id;
@@ -21,7 +21,7 @@ public class Habitaciones {
     private double horaAdicional;
     private double personaAdicional;
     private ArrayList<Imagen> imagenes;
-    
+
     public Habitaciones(){
     }
 
@@ -108,9 +108,9 @@ public class Habitaciones {
     public void setImagenes(ArrayList<Imagen> imagenes) {
         this.imagenes = imagenes;
     }
-    
+
     public void addImagen(Imagen nombre){
         this.imagenes.add(nombre);
     }
-    
+
 }

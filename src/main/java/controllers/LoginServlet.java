@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.Usuario;
 import models.dao.DaoUsuarios;
-import util.Hash;
+import util.*;
 
 /**
  *
@@ -25,24 +25,24 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
             String redirect = request.getParameter("redirect");
-            
+
             Usuario usuario = new Usuario();
             DaoUsuarios dao = new DaoUsuarios();
             String correo = request.getParameter("correo");
             String clave = request.getParameter("clave");
-            
+
             if(!correo.isEmpty() && !clave.isEmpty()){
                 if(dao.validarCorreo(correo)){
                     usuario.setCorreo(correo);
-                    try {                
+                    try {
                         usuario.setClave(Hash.sha256(clave));
                     } catch (NoSuchAlgorithmException ex) {
                         System.out.println("Error en hasheo" + ex);
@@ -53,21 +53,21 @@ public class LoginServlet extends HttpServlet {
                         HttpSession session = request.getSession();
                         usuario.setClave("");
                         session.setAttribute("usuario", usuario);
-                        
+
                         if(redirect != null){
                             response.sendRedirect(redirect);
                         }else if(usuario.getRol().equals(Usuario.ADMINISTRADOR)){
                             System.out.println("ERROR: " + session.getAttribute("usuario").toString());
-                            response.sendRedirect("/MotelsLine/admin/reservas/index.jsp");
+                            response.sendRedirect(Routes.getUrl("admin/reservas/index.jsp"));
                         }else if(usuario.getRol().equals(Usuario.EMPLEADO)){
-                            response.sendRedirect("/MotelsLine/empleado/index.jsp");
+                            response.sendRedirect(Routes.getUrl("empleado/index.jsp"));
                         }else if(usuario.getRol().equals(Usuario.CLIENTE)){
-                            response.sendRedirect("/MotelsLine/index.jsp");
+                            response.sendRedirect(Routes.getUrl(""));
                         }else{
                             response.getWriter().println("no se pudo");
                         }
 
-                    }else{                         
+                    }else{
                         response.setStatus(400);
                         response.getWriter().println("¡Correo o Clave incorrecta!");
                     }
@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
             }else{
                 response.setStatus(400);
                 response.getWriter().println("Todos los campos son obligatorios");
-            } 
+            }
     }
 
     /**

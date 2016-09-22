@@ -7,14 +7,14 @@
 <%@page import="models.dao.DaoUsuarios"%>
 <%@page import="models.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
     Usuario usuario = new Usuario();
 
     if(session.getAttribute("usuario") == null) {
-        response.sendRedirect("/MotelsLine/login.jsp");
+        response.sendRedirect(Routes.getUrl("login.jsp"));
     } else {
         usuario = (Usuario) session.getAttribute("usuario");
-
     }
 %>
 <!DOCTYPE html>
@@ -185,9 +185,9 @@
                     <div id="cuenta">
                         <div class="row">
                             <div class="card">
-                                <div class="card-title">
+
                                     <h1>Eliminar cuenta</h1>
-                                </div>
+
                                 <div class="card-content">
                                     <h5>Se eliminará su perfil, registro de reservas</h5>
                                 </div>

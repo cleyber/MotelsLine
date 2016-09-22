@@ -1,20 +1,20 @@
-<%-- 
+<%--
     Document   : serviciosAdmin
     Created on : 16-jun-2016, 7:53:03
     Author     : APRENDIZ
 --%>
-
+<%@page import="util.Routes"%>
 <%@page import="models.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    if(session.getAttribute("usuario") == null) {
-        response.sendRedirect("/MotelsLine/login.jsp");
-    } else {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
-          response.sendRedirect("/MotelsLine/index.jsp");
-        }
+   if(session.getAttribute("usuario") == null) {
+    response.sendRedirect(Routes.getUrl("login.jsp"));
+   } else {
+    Usuario usuario = (Usuario) session.getAttribute("usuario");
+    if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
+      response.sendRedirect(Routes.getUrl(""));
     }
+   }
 %>
 <!DOCTYPE html>
 <html>
@@ -22,14 +22,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../../css/materialize.min.css" rel="stylesheet" type="text/css"/>        
-        <script src="../../js/jquery-3.0.0.min.js" type="text/javascript"></script>
-        <script src="../../js/materialize.min.js" type="text/javascript"></script>
-        <script src="../../js/sweetalert.min.js" type="text/javascript"></script>
-        <link href="../../css/sweetalert.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/font-awesome.min.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
+        <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+
         <style>
             h1 {
             font-family: fantasy;
@@ -38,13 +39,13 @@
         </style>
         <script>
             $(document).ready(function(){
-                $(".button-collapse").sideNav(); 
+                $(".button-collapse").sideNav();
                 $(".dropdown-button").dropdown();
-                
+
                 $('form').submit(function(evento) {
                  evento.preventDefault();
                 });
-                
+
                 $("#guardar").click(function(){
                     $.ajax({
                         url: "/MotelsLine/RegistrarHabitacionServlet",
@@ -57,23 +58,23 @@
                             cantidadHoras: $('#cantidadHoras').val(),
                             horaAdicional: $('#horaAdicional').val(),
                             personaAdicional: $('#personaAdicional').val()
-                                                      
+
                         },
-                        success: function(id){                            
+                        success: function(id){
                             swal({
                                title: "Registro",
                                text: "La habitacion se ha registrado exitosamente",
-                               type: "success"                               
+                               type: "success"
                             },
                                 function(){
                                     window.location = "/MotelsLine/admin/habitaciones/imagenes.jsp?id=" + id;
                                 }
                             );
-                                                         
+
                         },
-                        error: function(respuesta){                            
+                        error: function(respuesta){
                             sweetAlert("ERROR", respuesta, "error");
-                        }                        
+                        }
                     });
                 });
             });
@@ -83,12 +84,12 @@
     <body>
         <%@include file="../menu.jsp" %>
         <main>
-            <section class="container">                
+            <section class="container">
                 <h1 class="center-align">Registrar habitación</h1>
                 <br>
                 <div class="divider"></div>
                     <div class="row">
-                        
+
                         <form class="col m8 offset-m2 center-align">
                             <div class="input-field">
                                 <label for="nombre">Nombre</label>
@@ -126,9 +127,9 @@
                                     <a href="/MotelsLine/admin" id="cancelar" class="btn red waves-effect">Cancelar</a>
                                 </div>
                             </div>
-                        </form>                    
-                    </div>                
-            </section> 
+                        </form>
+                    </div>
+            </section>
         </main>
         <%@include file="../footer.jsp" %>
     </body>
