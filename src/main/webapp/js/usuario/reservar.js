@@ -1,8 +1,5 @@
 $(document).ready(function(){
     $(".button-collapse").sideNav();
-    $('form').submit(function(evento){
-       evento.preventDefault();
-    });
     $('.datepicker').pickadate({
         selectMonths: true,
         selectYears: 15
@@ -44,10 +41,14 @@ $(document).ready(function(){
    }
 
    function showLogin(){
-      formLogin.removeClass("hide");
-      wizardProgress.css({
-          width: "75%"
-      });
+      if(!logged){
+         formLogin.removeClass("hide");
+         wizardProgress.css({
+             width: "75%"
+         });
+      }else{
+         showResumen();
+      }
    }
 
    function hideLogin(){
@@ -55,7 +56,7 @@ $(document).ready(function(){
    }
 
    function showResumen(){
-      resume.removeClass("hide");
+      resumen.removeClass("hide");
       wizardProgress.css({
           width: "100%"
       });
@@ -123,5 +124,12 @@ $(document).ready(function(){
    $("#guardar").click(function(){
       save();
    });
+
+   $("#resumen_atras").click(function(){
+      hideResumen();
+      showFecha();
+   });
+
+
 
 });

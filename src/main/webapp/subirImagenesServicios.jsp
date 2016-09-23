@@ -49,26 +49,10 @@
 
                     /*cual sera la ruta al archivo en el servidor*/
                     File imagenes = new File(getServletContext().getRealPath("") + "/imgServidor/" + nombre);
-                    File backupImagenes = new File(getServletContext().getRealPath("") + "/../../backupImgServidor/" + nombre);
+
 
                 /*y lo escribimos en el servidor*/
                     item.write(imagenes);
-
-                    Files.copy(imagenes.toPath(), backupImagenes.toPath());
-
-
-
-                /*
-                out.print("Nombre --> " + item.getName() );
-                out.print("<br> Tipo -- " + item.getContentType());
-                out.print("<br> tama�o --> " + (item.getSize()/1240)+ "KB");
-                out.print("<br>");
-                out.print("Pruba -->" + getServletContext().getRealPath(""));
-                out.print("<br>");
-                out.print("item ->>" + item.hashCode());
-                out.print("<br>");*/
-               // out.print("token->>" + );
-
                 }
             }
         }

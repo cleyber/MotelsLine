@@ -1,9 +1,9 @@
-$(document).ready(function(){ 
-    
+$(document).ready(function(){
+
     $('form').submit(function(evento){
-       evento.preventDefault(); 
+       evento.preventDefault();
     });
-    
+
    var formAdmin = $("#form_admin");
    var formMotel = $("#form_motel");
    var formFinalizar = $("#form_finalizar");
@@ -14,7 +14,7 @@ $(document).ready(function(){
    var preloader = $("#preloader");
 
    $("#sgnte_motel").click(function(){
-      formMotel.addClass("hide");      
+      formMotel.addClass("hide");
       formAdmin.removeClass("hide");
       wizardProgress.css({
          width: "66.66%"
@@ -36,7 +36,7 @@ $(document).ready(function(){
          width: "33.33%"
       });
    });
-   
+
    $("#atras_error").click(function(){
       formAdmin.removeClass("hide");
       formFinalizar.addClass("hide");
@@ -46,13 +46,13 @@ $(document).ready(function(){
       }).removeClass("red").addClass("blue");
    });
 
-   $("#guardar").click(function(){       
-      
+   $("#guardar").click(function(){
+
       formAdmin.addClass("hide");
       preloader.removeClass("hide");
-      
+
       $.ajax({
-         url: "/MotelsLine/RegistrarAdminServlet",
+         url: Routes.getUrl("RegistrarAdminServlet"),
          method: "post",
          data:{
             motel: JSON.stringify({
@@ -70,7 +70,7 @@ $(document).ready(function(){
                confirmar: $("#admin_confirmar").val()
             })
          },
-         success: function(){ 
+         success: function(){
             ok.removeClass("hide");
             wizardProgress.css({
                 width: "100%"
@@ -85,7 +85,7 @@ $(document).ready(function(){
          },
          complete: function(){
             formFinalizar.removeClass("hide");
-            preloader.addClass("hide");            
+            preloader.addClass("hide");
          }
       });
    });

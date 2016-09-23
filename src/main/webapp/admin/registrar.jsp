@@ -20,6 +20,7 @@
       <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
       <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
       <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+      <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
       <script src="<%=Routes.getUrl("js/admin/registrar.js")%>" type="text/javascript"></script>
 
       <title>Registro</title>

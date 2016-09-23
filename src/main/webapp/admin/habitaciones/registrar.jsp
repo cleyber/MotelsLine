@@ -30,6 +30,7 @@
         <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
         <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
 
         <style>
             h1 {
@@ -48,7 +49,7 @@
 
                 $("#guardar").click(function(){
                     $.ajax({
-                        url: "/MotelsLine/RegistrarHabitacionServlet",
+                        url: Routes.getUrl("RegistrarHabitacionServlet"),
                         method: "post",
                         data: {
                             nombre: $('#nombre').val(),
@@ -67,7 +68,7 @@
                                type: "success"
                             },
                                 function(){
-                                    window.location = "/MotelsLine/admin/habitaciones/imagenes.jsp?id=" + id;
+                                    window.location = Routes.getUrl("admin/habitaciones/imagenes.jsp?id=" + id);
                                 }
                             );
 
