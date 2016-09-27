@@ -71,14 +71,14 @@
                 <div class="col s12">
                     <div class="card">
                         <div class="card-content">
-                           <div id="form_servicios"><!--Servicios-->
+                           <div id="form_servicios" class="hide"><!--Servicios-->
                            <div class="row">
                             <%
                                for(Servicios servicio  : array){
                            %>
                            <div class="col s12 m3">
                                <div>
-                                   <input type="checkbox" id="<%=servicio.getId()%>" class="servicio" value="<%=servicio.getNombre()%>" name="servicio">
+                                   <input type="checkbox" id="<%=servicio.getId()%>" class="servicio" value="<%=servicio.getId()%>" name="servicio">
                                    <label for="<%=servicio.getId()%>"><%=servicio.getNombre()%></label>
                                </div>
                            </div>
@@ -96,14 +96,14 @@
                                <div class="col m6 s12 ">
                                    <h5>Seleccione la fecha</h5>
                                    <div>
-                                       <input type="date" class="datepicker">
+                                       <input type="date" class="datepicker" id="fecha">
                                    </div>
                                </div>
                                <div class="col m6 s12">
                                    <h5>Seleccione la hora</h5>
                                    <div class="row ">
-                                       <div class="col m4 " id="hora">
-                                           <select>
+                                       <div class="col m4 ">
+                                           <select id="hora">
                                                <option value="01">01</option>
                                                <option value="02">02</option>
                                                <option value="03">03</option>
@@ -117,71 +117,24 @@
                                                <option value="12">12</option>
                                            </select>
                                        </div>
-                                       <div class="col m4" id="minutos">
-                                           <select>
-                                               <option value="00">00</option>
-                                               <option value="01">01</option>
-                                               <option value="02">02</option>
-                                               <option value="03">03</option>
-                                               <option value="04">04</option>
-                                               <option value="05">05</option>
-                                               <option value="06">06</option>
-                                               <option value="07">07</option>
-                                               <option value="08">08</option>
-                                               <option value="09">09</option>
-                                               <option value="10">10</option>
-                                               <option value="11">11</option>
-                                               <option value="12">12</option>
-                                               <option value="13">13</option>
-                                               <option value="14">14</option>
-                                               <option value="15">15</option>
-                                               <option value="16">16</option>
-                                               <option value="17">17</option>
-                                               <option value="18">18</option>
-                                               <option value="19">19</option>
-                                               <option value="21">21</option>
-                                               <option value="22">22</option>
-                                               <option value="23">23</option>
-                                               <option value="24">24</option>
-                                               <option value="25">25</option>
-                                               <option value="26">26</option>
-                                               <option value="27">27</option>
-                                               <option value="28">28</option>
-                                               <option value="29">29</option>
-                                               <option value="30">30</option>
-                                               <option value="31">31</option>
-                                               <option value="32">32</option>
-                                               <option value="33">33</option>
-                                               <option value="34">34</option>
-                                               <option value="35">35</option>
-                                               <option value="36">36</option>
-                                               <option value="37">37</option>
-                                               <option value="38">38</option>
-                                               <option value="39">39</option>
-                                               <option value="40">40</option>
-                                               <option value="41">41</option>
-                                               <option value="42">42</option>
-                                               <option value="43">43</option>
-                                               <option value="44">44</option>
-                                               <option value="45">45</option>
-                                               <option value="46">46</option>
-                                               <option value="47">47</option>
-                                               <option value="48">48</option>
-                                               <option value="49">49</option>
-                                               <option value="50">50</option>
-                                               <option value="51">51</option>
-                                               <option value="52">52</option>
-                                               <option value="53">53</option>
-                                               <option value="54">54</option>
-                                               <option value="55">55</option>
-                                               <option value="56">56</option>
-                                               <option value="57">57</option>
-                                               <option value="58">58</option>
-                                               <option value="59">59</option>
+                                       <div class="col m4" >
+                                           <select id="minutos">
+                                              <option>00</option>
+                                               <option>05</option>
+                                               <option>10</option>
+                                               <option>15</option>
+                                               <option>20</option>
+                                               <option>25</option>
+                                               <option>30</option>
+                                               <option>35</option>
+                                               <option>40</option>
+                                               <option>45</option>
+                                               <option>50</option>
+                                               <option>55</option>
                                            </select>
                                        </div>
-                                       <div class="col m4" id="meridiano">
-                                           <select>
+                                       <div class="col m4">
+                                           <select id="meridiano">
                                                <option value="am" selected>AM</option>
                                                <option value="pm">PM</option>
                                            </select>
@@ -193,13 +146,13 @@
                                <div class="col m6 s12">
                                    <div class="input-field">
                                        <label for="perExtra">Personas Extras</label>
-                                       <input type="number" id="perExtra">
+                                       <input type="number" id="per_extra" value="0">
                                    </div>
                                </div>
                                <div class="col m6 s12">
                                    <div class="input-field">
                                        <label for="horaExtra">Horas Extras</label>
-                                       <input type="number" id="horaExtra">
+                                       <input type="number" id="hora_extra" value="0">
                                    </div>
                                </div>
                            </div>
@@ -260,7 +213,7 @@
                                  <button id="resumen_atras" class="btn waves-effect blue" type="button">Atras</button>
                               </div>
                               <div class="right-align col s6">
-                                 <button class="btn waves-effect blue" id="guardar" type="button">iniciar sesion</button>
+                                 <button class="btn waves-effect blue" id="guardar" type="button">Terminar</button>
                               </div>
                            </div>
                            </div>

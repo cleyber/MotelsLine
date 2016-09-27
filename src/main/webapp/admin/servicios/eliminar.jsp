@@ -28,6 +28,7 @@
         <link href="<%=Routes.getUrl("css/font-awesome.min.css")%>" rel="stylesheet" type="text/css"/>
         <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
         <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+        <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
         <title>Eliminar Servicio</title>
         <script>
             $(document).ready(function(){
@@ -40,7 +41,7 @@
 
                 $("#aceptar").click(function(){
                     $.ajax({
-                        url: "../../EliminarServicioServlet",
+                        url: Routes.getUrl("EliminarServicioServlet"),
                         method: "post",
                         data: {
                             nombre: $('#nombre').val()

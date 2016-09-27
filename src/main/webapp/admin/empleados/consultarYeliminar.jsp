@@ -40,6 +40,7 @@
         <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
         <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
         <title>Eliminar Servicio</title>
         <script>
             $(document).ready(function(){
@@ -60,7 +61,7 @@
                    showLoaderOnConfirm: true
                 }, function(){
                     $.ajax({
-                        url: "../../EliminarUsuarioServlet",
+                        url: Routes.getUrl("EliminarUsuarioServlet"),
                         method: "post",
                         data:{
                             id: id

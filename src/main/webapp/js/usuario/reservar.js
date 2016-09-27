@@ -1,8 +1,17 @@
 $(document).ready(function(){
     $(".button-collapse").sideNav();
     $('.datepicker').pickadate({
+      format: 'yyyy/mm/dd',
+      min: new Date,
         selectMonths: true,
-        selectYears: 15
+        selectYears: 15,
+       monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+      weekdaysShort: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'vi', 'Sa'],
+      today: 'Hoy',
+      clear: 'Limpiar',
+      close: 'Cerrar'
     });
     $('select').material_select();
 
@@ -11,11 +20,14 @@ $(document).ready(function(){
     var formLogin = $("#form_login");
     var formFecha = $("#form_fecha");
     var wizardProgress = $("#wizard_progress");
-    var ok = $("#ok");
-    var mensaje = $("#mensaje");
-    var error = $("#error");
     var resumen = $("#resumen");
     var guardar = $("#guardar_reserva");
+
+    if(logged && sessionStorage.length>0){
+      showResumen();
+   }else{
+      showServicios();
+   }
 
 
    function showServicios(){
@@ -41,6 +53,7 @@ $(document).ready(function(){
    }
 
    function showLogin(){
+      initSession();
       if(!logged){
          formLogin.removeClass("hide");
          wizardProgress.css({
@@ -99,7 +112,18 @@ $(document).ready(function(){
      });
    }
 
-   //Eventos
+   function initSession(){
+      sessionStorage['servicios'] = JSON.stringify($(".servicio:checked").serializeArray());
+      sessionStorage.fecha = $('#fecha').val();
+      sessionStorage.hora = $('#hora').val();
+      sessionStorage.minutos = $('#minutos').val();
+      sessionStorage.meridiano = $('#meridiano').val();
+      sessionStorage.personas = $('#per_extra').val();
+      sessionStorage.horasExtras = $('#hora_extra').val();
+      //console.log(JSON.stringify($(".servicio:checked").serializeArray()));
+   }
+
+   //Events
 
    $("#siguiente_fecha").click(function(){
       hideServicios();

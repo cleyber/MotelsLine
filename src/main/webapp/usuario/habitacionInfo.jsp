@@ -82,7 +82,7 @@
                     </div>
                     <div class="valign-wrapper">
                         <div class="col s6 right-align valign">
-                            <a href="<%=Routes.getUrl("usuario/reservas.jsp")%>"><button class="btn red darken-3">Reservar</button></a>
+                            <a href="<%=Routes.getUrl("usuario/reservar.jsp")%>"><button class="btn red darken-3">Reservar</button></a>
                         </div>
                     </div>
                 </div>

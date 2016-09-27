@@ -76,7 +76,7 @@ public class RegistrarUsuarioServlet extends HttpServlet {
                             Email desde = new Email("notificacion@motelsline.com");
                             String asunto = "¡Bienvenido!";
                             Email para = new Email(usuario.getCorreo());
-                            Content contenido = new Content("text/html", "<h1>¡Bienvenido! " + usuario.getNombre() + " </h1><h2> Eres un cliente apreciado de MotelsLine ahora puede iniciar sesión <a href='http://localhost:8080/MotelsLine/login.jsp'>aquí</a></h2>");
+                            Content contenido = new Content("text/html", "<h1>¡Bienvenido! " + usuario.getNombre() + " </h1><h2> Eres un cliente apreciado de MotelsLine ahora puede iniciar sesión <a href='http://motel-sline.rhcloud.com/login.jsp'>aquí</a></h2>");
                             Mail mail = new Mail(desde, asunto, para, contenido);
 
                             SendGrid send = new SendGrid("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");

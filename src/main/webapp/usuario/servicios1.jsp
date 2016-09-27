@@ -3,6 +3,7 @@
     Created on : 15-jun-2016, 22:16:06
     Author     : Cleyber
 --%>
+<%@page import="util.Routes"%>
 <%@page import="models.Imagen"%>
 <%@page import="models.dao.DaoServicios"%>
 <%@page import="java.util.ArrayList"%>

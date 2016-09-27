@@ -5,6 +5,13 @@ label{
   font-family: Arial;
   font-size: 15px;
 }
+div a h5 {
+   color: black;
+}
+
+#h5-bienvenidos {
+   color: white;
+}
 
 #targeta{
   padding: 10%;
@@ -48,5 +55,27 @@ body {
 }
 
 #claveOlvidada {
+   margin-bottom: 5%;
+}
+
+#index-banner{
+    min-height: 500px;
+}
+
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  #fa-key {
+     margin-top: 4%;
+ }
+
+ #olvidado {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#olvidado2 {
    margin-bottom: 5%;
 }

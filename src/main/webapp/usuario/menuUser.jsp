@@ -20,7 +20,7 @@
                         <li><a href="<%=Routes.getUrl("login.jsp")%>">Ingresar</a></li>
                    <%}%>
                    <%if(logueado){%>
-                        <li><a href="<%=Routes.getUrl("usuario/reservas.jsp")%>">Reservas</a></li>
+                        <li><a href="<%=Routes.getUrl("usuario/reservar.jsp")%>">Reservar</a></li>
                         <li><a href="<%=Routes.getUrl("modifPerfil.jsp")%>">Perfil</a></li>
                         <li><a href="<%=Routes.getUrl("LogoutServlet")%>">Salir</a></li>
                    <%}%>
@@ -34,7 +34,7 @@
                         <li><a href="<%=Routes.getUrl("login.jsp")%>">Ingresar</a></li>
                    <%}%>
                    <%if(logueado){%>
-                        <li><a href="<%=Routes.getUrl("usuario/reservas.jsp")%>">Reservas</a></li>
+                        <li><a href="<%=Routes.getUrl("usuario/reservar.jsp")%>">Reservar</a></li>
                         <li><a href="<%=Routes.getUrl("modifPerfil.jsp")%>">Perfil</a></li>
                         <li><a href="<%=Routes.getUrl("LogoutServlet")%>">Salir</a></li>
                    <%}%>

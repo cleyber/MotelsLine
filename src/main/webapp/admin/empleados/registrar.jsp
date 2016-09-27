@@ -29,6 +29,7 @@
         <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
         <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
         <script>
             $(document).ready(function(){
                 $(".button-collapse").sideNav();
@@ -40,7 +41,7 @@
 
                 $("#guardar").click(function(){
                     $.ajax({
-                        url: "../../RegistrarEmpleadoServlet",
+                        url: Routes.getUrl("RegistrarEmpleadoServlet"),
                         method: "post",
                         data: {
                             nombre: $('#nombre').val(),

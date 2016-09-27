@@ -13,11 +13,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+        <link href="<%=Routes.getUrl("css/font-awesome.min.css")%>" rel="stylesheet" type="text/css"/>
         <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
-        <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
-        <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
         <title>Inicio</title>
         <script>
             $(document).ready(function(){
@@ -37,7 +36,7 @@
                   <br><br>
                   <h1 class="header teal-text text-lighten-2">MotelsLine</h1>
                   <div class="row">
-                    <h5 class="left-align header col s12 light">Bienvenidos a la nueva forma de reservar un motel</h5>
+                    <h5 class="left-align header col s12 light" id="h5-bienvenidos">Bienvenidos a la nueva forma de reservar un motel</h5>
                   </div>
                   <br><br>
 
@@ -120,5 +119,6 @@
               <div class="parallax"><img src="<%=Routes.getUrl("img/img2.jpg")%>" alt="Unsplashed background img 3"></div>
             </div>
            <%@include file="admin/footer.jsp" %>
+        </main>
     </body>
 </html>

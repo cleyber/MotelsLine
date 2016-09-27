@@ -47,6 +47,7 @@
         <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
         <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
         <style>
             h1 {
             font-family: fantasy;
@@ -60,22 +61,8 @@
             });
 
             function eliminarImg(id){
-                /*swal({
-                   title: "Eliminar",
-                   text: "¿Esta seguro que desea eliminar la imagen?",
-                   type: "warning",
-                   allowEscapeKey: true,
-                   allowOutsideClick: true,
-                   showCancelButton: true,
-                   showConfirmButton: true,
-                   confirmButtonText: "Eliminar",
-                   confirmButtonColor: "#f44336",
-                   cancelButtonText: "Cancelar"
-                },
-                function(){
-                });*/
                 $.ajax({
-                    url: "/MotelsLine/EliminarImagenHabitacionServlet",
+                    url: Routes.getUrl("EliminarImagenHabitacionServlet"),
                     method: "post",
                     data: {
                         id: id

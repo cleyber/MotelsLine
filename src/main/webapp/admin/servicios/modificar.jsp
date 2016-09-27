@@ -38,6 +38,7 @@
          <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
          <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
          <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+         <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
         <script>
             $(document).ready(function(){
                 $(".menu-modificar").addClass("active");
@@ -51,7 +52,7 @@
 
                 $("#guardar").click(function(){
                     $.ajax({
-                        url: "../../ModificarServicioServlet",
+                        url: Routes.getUrl("ModificarServicioServlet"),
                         method: "post",
                         data: {
                             nombre: $('#nombre').val(),

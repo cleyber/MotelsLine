@@ -41,6 +41,7 @@
         <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
         <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
+        <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
         <title>Eliminar Habitacion</title>
         <style>
             h1 {
@@ -67,7 +68,7 @@
                    showLoaderOnConfirm: true
                 }, function(){
                     $.ajax({
-                        url: "../../EliminarHabitacionServlet",
+                        url: Routes.getUrl("EliminarHabitacionServlet"),
                         method: "post",
                         data:{
                             id: id
