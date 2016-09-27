@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $(".button-collapse").sideNav();
     $('.datepicker').pickadate({
-      format: 'yyyy/mm/dd',
+      format: 'yyyy-mm-dd',
       min: new Date,
         selectMonths: true,
         selectYears: 15,
@@ -23,7 +23,7 @@ $(document).ready(function(){
     var resumen = $("#resumen");
     var guardar = $("#guardar_reserva");
 
-    if(logged && sessionStorage.length>0){
+    if(logged && sessionStorage.servicios){
       showResumen();
    }else{
       showServicios();
@@ -80,22 +80,19 @@ $(document).ready(function(){
    }
 
    function save(){
-      $.jax({
-         url: "ReservarServlet",
+      $.ajax({
+         url: Routes.getUrl('ReservarServlet'),
          method: "post",
          data:{
-            habitacion: JSON.stringify({
-                id: d,
-            }),
-            servicios: JSON.stringify({
-                id: d,
-            }),
-            fecha: JSON.stringify({
-                hora: $("#hora").val(),
-                minutos: $("#minutos").val(),
-                meridiano: $("#meridiando").val()
-
-            })
+            habitacion: sessionStorage.habitacion,
+           fecha: sessionStorage.fecha,
+           minutos: sessionStorage.minutos,
+           horasExtras: sessionStorage.horasExtras,
+           servicios: sessionStorage.servicios,
+           personas: sessionStorage.personas,
+           hora: sessionStorage.hora,
+           meridiano: sessionStorage.meridiano,
+           usuario: sessionStorage.usuario
          },
          success: function(){
              ok.removeClass("hide");
@@ -113,14 +110,17 @@ $(document).ready(function(){
    }
 
    function initSession(){
-      sessionStorage['servicios'] = JSON.stringify($(".servicio:checked").serializeArray());
       sessionStorage.fecha = $('#fecha').val();
       sessionStorage.hora = $('#hora').val();
       sessionStorage.minutos = $('#minutos').val();
       sessionStorage.meridiano = $('#meridiano').val();
       sessionStorage.personas = $('#per_extra').val();
       sessionStorage.horasExtras = $('#hora_extra').val();
-      //console.log(JSON.stringify($(".servicio:checked").serializeArray()));
+
+      var servicios = $.map($('.servicio:checked').serializeArray(), function(servicio) {
+        return parseInt(servicio.value);
+      });
+      sessionStorage.servicios = JSON.stringify(servicios);
    }
 
    //Events

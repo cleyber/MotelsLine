@@ -11,12 +11,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+   Usuario usuario = new Usuario();
    boolean logged;
    if(session.getAttribute("usuario") == null) {
      logged = false;
     } else {
       logged = true;
-    }
+      usuario = (Usuario) session.getAttribute("usuario");
+   }
+
+      int idHabitacion = 0;
+      if(request.getParameter("habitacion") != null) {
+        idHabitacion = Integer.parseInt(request.getParameter("habitacion"));
+      }
 
     Servicios servicios = new Servicios();
     DaoServicios dao = new DaoServicios();
@@ -37,10 +44,19 @@
       <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
       <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
       <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
+      <script src="<%=Routes.getUrl("js/Routes.js")%>"></script>
 
       <script>
 
             var logged = <%=logged%>;
+
+            if(!sessionStorage.habitacion) {
+              sessionStorage.habitacion = <%=idHabitacion%>;
+            }
+
+            <% if(logged) { %>
+              sessionStorage.usuario = <%=usuario.getId()%>;
+            <% } %> 
 
       </script>
 
@@ -183,7 +199,7 @@
                                        <input type="password" id="clave" name="clave">
                                     </div>
                                     <div class="right-align">
-                                       <a href="#">¿Olvidaste tu clave?</a>
+                                       <a href="<%=Routes.getUrl("recuperarClave.jsp")%>">¿Olvidaste tu clave?</a>
                                     </div>
                                  </div>
                               </div>

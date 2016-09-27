@@ -19,20 +19,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-           <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
-           <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
-        <style>
-            ul li{
-                float: left;
-                margin: 3px;
-            }
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
+          <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
+      <style>
+           ul li{
+               float: left;
+               margin: 3px;
+           }
 
-        </style>
-        <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
-        <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+      </style>
+      <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
+      <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <script>
             $(document).ready(function(){
                $(".button-collapse").sideNav();
@@ -59,21 +59,17 @@
                                 <%
                                    if(servicio.getImagenes().size() >= 1){
                                 %>
-                                <div class="slider">
-                                    <ul class="slides">
-                                        <%
+                                    <%
 
-                                                for(Imagen imagen : servicio.getImagenes()){
+                                            for(Imagen imagen : servicio.getImagenes()){
 
-                                         %>
-                                      <li>
-                                        <img src="<%=Routes.getUrl("imgServidor/")%><%=imagen.getNombre()%>">
-                                      </li>
-                                      <%
-                                            }
-                                        %>
-                                    </ul>
-                                </div>
+                                     %>
+
+                                    <img src="<%=Routes.getUrl("imgServidor/")%><%=imagen.getNombre()%>">
+
+                                  <%
+                                        }
+                                    %>
                                  <%
                                      }else{
                                  %>
@@ -120,7 +116,7 @@
             <div class="footer-copyright blue-grey darken-4">
               <div class="container">
               © 2016 Copyright MotelsLine
-              <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+              <a class="grey-text text-lighten-4 right" href="<%=Routes.getUrl("acercade")%>">Acerca de</a>
               </div>
             </div>
         </footer>

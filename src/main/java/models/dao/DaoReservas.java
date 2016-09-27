@@ -8,13 +8,15 @@ package models.dao;
 import java.sql.*;
 import models.Reservas;
 import models.Servicios;
+import java.util.ArrayList;
+import java.sql.Date;
 
 /**
  *
  * @author Cleyber
  */
 public class DaoReservas {
-    
+
     public int insertar(Reservas reserva){
         Conexion conexion = new Conexion();
         int insertado = 0;
@@ -28,7 +30,7 @@ public class DaoReservas {
                 statement.setInt(5, reserva.getPersonasExtras());
                 insertado = statement.executeUpdate();
                 PreparedStatement statement2 = conexion.prepareStatement("SELECT * FROM reservas ORDER BY id_reserva desc limit 1");
-                ResultSet result = statement.executeQuery();
+                ResultSet result = statement2.executeQuery();
                 result.next();
                 reserva.setId(result.getInt("id_reserva"));
                 for(Servicios servicio : reserva.getServicios()){
@@ -45,5 +47,31 @@ public class DaoReservas {
         }
         return insertado;
     }
-    
+
+   public ArrayList<Reservas> consultarAll(){
+      Conexion conexion = new Conexion();
+      try{
+         PreparedStatement statement = conexion.prepareStatement("SELECT * FROM reservas");
+         ArrayList<Reservas> list = new ArrayList();
+         ResultSet result = statement.executeQuery();
+         while(result.next()){
+            Reservas reserva = new Reservas();
+            reserva.setFecha(result.getDate("fecha"));
+            reserva.setHorasExtras(result.getInt("horas_extras"));
+            reserva.setPersonasExtras(result.getInt("personas_extras"));
+            list.add(reserva);
+         }
+         return list;
+      }catch(SQLException se){
+         System.out.println("Error consultado todas las reservas: " + se.toString());
+         return null;
+      }finally{
+         try{
+            conexion.desconectar();
+         }catch(Exception ex){
+            System.out.println("Error al desconectar la conexion: " + ex.toString());
+         }
+      }
+   }
+
 }

@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
                             System.out.println("ERROR: " + session.getAttribute("usuario").toString());
                             response.sendRedirect(Routes.getUrl("admin/reservas/index.jsp"));
                         }else if(usuario.getRol().equals(Usuario.EMPLEADO)){
-                            response.sendRedirect(Routes.getUrl("empleado/index.jsp"));
+                            response.sendRedirect(Routes.getUrl("empleado/consultar.jsp"));
                         }else if(usuario.getRol().equals(Usuario.CLIENTE)){
                             response.sendRedirect(Routes.getUrl(""));
                         }else{

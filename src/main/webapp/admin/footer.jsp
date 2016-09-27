@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">MotelsLine</h5>
-          <p class="grey-text text-lighten-4">Direcci�n: </p>
+          <p class="grey-text text-lighten-4">Dirección: </p>
         </div>
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Redes sociales</h5>
@@ -18,8 +18,8 @@
     </div>
     <div class="footer-copyright black">
       <div class="container">
-      � 2016 Copyright MotelsLine
-      <a class="grey-text text-lighten-4 right" href="#!">Acerca de</a>
+       2016 Copyright MotelsLine
+      <a class="grey-text text-lighten-4 right" href="<%=Routes.getUrl("acercade.jsp")%>">Acerca de</a>
       </div>
     </div>
 </footer>
