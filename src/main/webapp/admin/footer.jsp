@@ -1,12 +1,14 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <footer class="page-footer grey darken-4">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">MotelsLine</h5>
-          <p class="grey-text text-lighten-4">Dirección: </p>
+          <h6 class="white-text">MotelsLine</h6>
+          <p class="grey-text text-lighten-4">Dirección: calle 67 # 78-90</p>
+          <p class="grey-text text-lighten-4">Teléfono: 567 89 90</p>
         </div>
         <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Redes sociales</h5>
+          <h6 class="white-text">Redes sociales</h6>
           <ul class="valign-wrapper">
               <li><a class="grey-text text-lighten-3 valign" href="#!"><img src="<%=Routes.getUrl("img/icons/f2.png")%>"></a></li>
               <li><a class="grey-text text-lighten-3 valign" href="#!"><img src="<%=Routes.getUrl("img/icons/twitter.png")%>"></a></li>

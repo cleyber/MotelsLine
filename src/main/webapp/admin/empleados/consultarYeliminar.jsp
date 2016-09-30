@@ -16,11 +16,9 @@
     } else {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         if(!usuario.getRol().equals(Usuario.ADMINISTRADOR)) {
-          response.sendRedirect(getUrl(""));
+          response.sendRedirect(Routes.getUrl(""));
         }
     }
-
-
 
     ArrayList<Usuario> list = new ArrayList();
     DaoUsuarios dao = new DaoUsuarios();
@@ -41,7 +39,7 @@
         <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
         <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
         <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
-        <title>Eliminar Servicio</title>
+        <title>Empleados</title>
         <script>
             $(document).ready(function(){
                 $(".button-collapse").sideNav();
@@ -83,7 +81,8 @@
         <%@include file="../menu.jsp" %>
         <main>
             <section class="container">
-                <table class="striped centered">
+               <h1>Eliminar empleados</h1>
+                <table class="striped responsive-table">
                     <thead>
                         <tr>
                             <th>Nombre</th>

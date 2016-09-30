@@ -1,4 +1,8 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+
+* {
+   font-family: 'Raleway', sans-serif;
+}
 
 label{
   color:#000000;
@@ -14,18 +18,14 @@ div a h5 {
 }
 
 #targeta{
-  padding: 10%;
-}
+  margin-top: 12%;
+  margin-bottom: 8%;
+  }
 
-#tituloLogin{
-  color: #000000;
-  font-family: fantasy;
-  font-size: 30px;
+#targeta_registrar {
+   margin-top: 8%;
+   margin-bottom: 6%;
 }
- #pregunta{
-   color: #00acc1;
-   font-family: Arial;
- }
 
  #wrapper{
    position: absolute;

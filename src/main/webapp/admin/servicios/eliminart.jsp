@@ -86,7 +86,8 @@
         <%@include file="../menu.jsp" %>
         <main>
             <section class="container">
-                <table class="striped centered">
+               <h1>Eliminar servicios</h1>
+                <table class="striped responsive-table">
                     <thead>
                         <tr>
                             <th>Nombre</th>

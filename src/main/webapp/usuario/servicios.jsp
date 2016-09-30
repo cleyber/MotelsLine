@@ -88,37 +88,10 @@
                             </div>
                         </div>
                     </div>
-                <%
-                    }
-
-                %>
+                <% } %>
                 </div>
             </section>
         </main>
-        <footer class="page-footer blue-grey darken-3">
-            <div class="container">
-              <div class="row">
-                <div class="col l6 s12">
-                  <h5 class="white-text">MotelsLine</h5>
-                  <p class="grey-text text-lighten-4">Dirección: </p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                  <h5 class="white-text">Redes sociales</h5>
-                  <ul>
-                      <li><a class="grey-text text-lighten-3" href="#!"><img src="../img/icons/f2.png"></a></li>
-                      <li><a class="grey-text text-lighten-3" href="#!"><img src="../img/icons/twitter.png"></a></li>
-                      <li><a class="grey-text text-lighten-3" href="#!"><img src="../img/icons/youtube.png"></a></li>
-                      <li><a class="grey-text text-lighten-3" href="#!"><img src="../img/icons/google.png"></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="footer-copyright blue-grey darken-4">
-              <div class="container">
-              © 2016 Copyright MotelsLine
-              <a class="grey-text text-lighten-4 right" href="<%=Routes.getUrl("acercade")%>">Acerca de</a>
-              </div>
-            </div>
-        </footer>
+        <%@include file="../admin/footer.jsp"%>
     </body>
 </html>

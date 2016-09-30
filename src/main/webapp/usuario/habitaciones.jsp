@@ -19,7 +19,6 @@
         <link href="<%=Routes.getUrl("css/materialize.min.css")%>" rel="stylesheet" type="text/css"/>
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
           <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
-
         <script src="<%=Routes.getUrl("js/jquery-3.0.0.min.js")%>" type="text/javascript"></script>
         <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
         <script>
@@ -34,10 +33,6 @@
                 float: left;
                 margin: 3px;
             }
-            h1 {
-            font-family: fantasy;
-            color: #e53935;
-            }
             .material-icons.md-36 a{
                 font-size: 36px;
                 position: absolute;
@@ -49,51 +44,10 @@
         <title>Habitaciones</title>
     </head>
     <body>
-
         <%@include file="menuUser.jsp" %>
-
-        <div class="slider">
-    <ul class="slides">
-      <li>
-        <img src="<%=Routes.getUrl("img/img1.jpg")%>"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>Bienvenido a MotelsLine</h3>
-          <h5 class="light grey-text text-lighten-3">La forma mas fácil de reservar un motel</h5>
-        </div>
-      </li>
-      <li>
-        <img src="<%=Routes.getUrl("img/img2.jpg")%>"> <!-- random image -->
-        <div class="caption left-align">
-          <h3>Elige las mejores habitaciones</h3>
-          <h5 class="light grey-text text-lighten-3">Hay para todos los gustos</h5>
-        </div>
-      </li>
-      <li>
-        <img src="<%=Routes.getUrl("img/img3.jpg")%>"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>Elige los servicios que quieras</h3>
-          <h5 class="light grey-text text-lighten-3">A los mejores precios</h5>
-        </div>
-      </li>
-      <li>
-        <img src="<%=Routes.getUrl("img/img4.jpg")%>"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>has tu mejor reserva</h3>
-          <h5 class="light grey-text text-lighten-3"> En simples pasos</h5>
-        </div>
-      </li>
-      <li>
-        <img src="<%=Routes.getUrl("img/slider.jpg")%>"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>MotelsLine</h3>
-          <h5 class="light grey-text text-lighten-3"></h5>
-        </div>
-      </li>
-    </ul>
-  </div>
             <main>
             <section class="container">
-                <h1 class="center-align">HABITACIÓNES</h1>
+                <h1>Habitaciones</h1>
               <!--  <img src="img/HABITACIONES.png">-->
               <div class="divider"></div>
                 <div class="row">
@@ -130,7 +84,7 @@
                                  <%
                                      }
                                  %>
-                                 <a href="<%=Routes.getUrl("usuario/habitacionInfo.jsp?habitacion=")%><%= habitacion.getId()%>"><h5 class="center-align"><b><%= habitacion.getNombre()%></b></h5></a>
+                                 <a href="<%=Routes.getUrl("usuario/habitacionInfo.jsp?habitacion=")%><%= habitacion.getId()%>"><h5 class="center-align" style="color: #000000"><%= habitacion.getNombre()%></h5></a>
                             </div>
 
                         </div>
@@ -140,8 +94,6 @@
 
                 %>
                 </div>
-
-
             </section>
         </main>
          <%@include file="../admin/footer.jsp"%>

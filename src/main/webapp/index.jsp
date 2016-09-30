@@ -17,6 +17,7 @@
         <link href="<%=Routes.getUrl("css/style.css")%>" rel="stylesheet" type="text/css"/>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="<%=Routes.getUrl("js/materialize.min.js")%>" type="text/javascript"></script>
+
         <title>Inicio</title>
         <script>
             $(document).ready(function(){
@@ -45,41 +46,26 @@
               <div class="parallax"><img src="<%=Routes.getUrl("img/img3.jpg")%>" alt="Unsplashed background img 1"></div>
             </div>
 
-
+            <%-- iconos --%>
             <div class="container">
               <div class="section">
-
-                <!--   Icon Section   -->
                 <div class="row">
-                  <div class="col s12 m4">
-                    <div class="icon-block">
-                      <a href="#"><h2 class="center brown-text"><i class="fa fa-phone" aria-hidden="true"></i></h2>
-                      <h5 class="center item">CONTACTANOS</h5></a>
-
-                      <p class="light"></p>
+                  <div class="col m6 s12">
+                    <div>
+                      <a href="<%=Routes.getUrl("contactanos.jsp")%>"><h2 class="center brown-text"><i class="fa fa-phone" aria-hidden="true"></i></h2>
+                      <h5 class="center item">Contáctanos</h5></a>
                   </div>
                 </div>
-                  <div class="col s12 m4">
-                    <div class="icon-block">
-                      <a href="#"><h2 class="center brown-text"><i class="fa fa-question" aria-hidden="true"></i></h2>
-                      <h5 class="center item">ACERCA DE</h5></a>
-
-                      <p class="light"></p>
-                    </div>
-                  </div>
-
-                  <div class="col s12 m4">
-                    <div class="icon-block">
-                      <a href="#"><h2 class="center brown-text"><i class="fa fa-info-circle" aria-hidden="true"></i></h2>
-                      <h5 class="center item">AYUDANOS A MEJORAR</h5></a>
-
-                      <p class="light"></p>
+                  <div class="col m6 s12">
+                    <div>
+                      <a href="<%=Routes.getUrl("acercade.jsp")%>"><h2 class="center brown-text"><i class="fa fa-question" aria-hidden="true"></i></h2>
+                      <h5 class="center item">Acerca de</h5></a>
                     </div>
                   </div>
                 </div>
+
                 </div>
               </div>
-            </div>
 
 
             <div class="parallax-container valign-wrapper">

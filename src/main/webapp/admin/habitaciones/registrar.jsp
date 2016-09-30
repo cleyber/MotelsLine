@@ -32,12 +32,7 @@
         <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
         <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
 
-        <style>
-            h1 {
-            font-family: fantasy;
-            color: #e53935;
-            }
-        </style>
+
         <script>
             $(document).ready(function(){
                 $(".button-collapse").sideNav();
@@ -87,8 +82,6 @@
         <main>
             <section class="container">
                 <h1 class="center-align">Registrar habitación</h1>
-                <br>
-                <div class="divider"></div>
                     <div class="row">
 
                         <form class="col m8 offset-m2 center-align">

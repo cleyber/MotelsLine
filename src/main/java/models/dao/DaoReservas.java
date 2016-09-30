@@ -48,7 +48,7 @@ public class DaoReservas {
         return insertado;
     }
 
-   public ArrayList<Reservas> consultarAll(){
+   /*public ArrayList<Reservas> consultarAll(){
       Conexion conexion = new Conexion();
       try{
          PreparedStatement statement = conexion.prepareStatement("SELECT * FROM reservas");
@@ -72,6 +72,6 @@ public class DaoReservas {
             System.out.println("Error al desconectar la conexion: " + ex.toString());
          }
       }
-   }
+   }*/
 
 }

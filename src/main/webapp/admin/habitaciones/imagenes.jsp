@@ -48,12 +48,7 @@
         <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
         <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
         <script src="<%=Routes.getUrl("js/Routes.js")%>" type="text/javascript"></script>
-        <style>
-            h1 {
-            font-family: fantasy;
-            color: #e53935;
-            }
-        </style>
+
         <script>
             $(document).ready(function(){
                 $(".button-collapse").sideNav();
@@ -88,9 +83,15 @@
             <section class="container">
                 <h1> Habitación: <%= habitacion.getNombre()%></h1>
                 <form enctype="MULTIPART/FORM-DATA" method="post" action="<%=Routes.getUrl("subirImgHabitacion.jsp?id=")%><%=id%>">
-                    <div>
-                        <input style="color: #D50000; font-family: fantasy" type="file" name="imagen" accept="image/*" multiple>
-                    </div>
+                <div class="file-field input-field">
+                <div class="btn">
+                 <span>File</span>
+                 <input type="file" name="imagen" accept="image/*">
+                </div>
+                <div class="file-path-wrapper">
+                 <input class="file-path validate" type="text">
+                </div>
+             </div>
                     <br>
                     <div class="btn waves-effect">
                         <input type="submit" value="guardar">

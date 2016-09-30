@@ -40,19 +40,14 @@
                 float: left;
                 margin: 3px;
             }
-            h1 {
-            font-family: fantasy;
-            color: #e53935;
-            }
             .material-icons.md-36 a{
                 font-size: 36px;
                 position: absolute;
                 top: 27%;
                 left: 85%;
             }
-
         </style>
-        <title>Habitaciones</title>
+        <title>Información Habitaciones</title>
     </head>
     <body>
         <%@include file="menuUser.jsp" %>
@@ -73,12 +68,13 @@
             <main>
             <section class="container">
                 <div class="row">
-                    <div col s6>
-                        <p><b>Descripcion:</b> <%= habitacion.getDescripcion()%></p>
-                        <p><b>Precio:</b><%= habitacion.getPrecio()%></p>
-                        <p><b>Cantidad de horas:</b> <%= habitacion.getCantidadHoras()%></p>
-                        <p><b>Hora adicional</b><%= habitacion.getHoraAdicional()%></p>
-                        <p><b>Persona adicional</b><%= habitacion.getPersonaAdicional()%></p>
+                   <h4><%=habitacion.getNombre()%></h4>
+                    <div>
+                        <p><b>Precio: </b>$ <%= habitacion.getPrecio()%></p>
+                        <p><b>Cantidad de horas: </b> <%= habitacion.getCantidadHoras()%></p>
+                        <p><b>Hora adicional: </b>$ <%= habitacion.getHoraAdicional()%></p>
+                        <p><b>Persona adicional: </b>$ <%= habitacion.getPersonaAdicional()%></p>
+                        <p><b>Descripcion: </b> <%= habitacion.getDescripcion()%></p>
                     </div>
                     <div class="valign-wrapper">
                         <div class="col s6 right-align valign">

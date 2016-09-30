@@ -67,7 +67,7 @@
     </head>
     <body>
         <main>
-           <%@include file="menuEmpleado.jsp" %>
+           <%@include file="../menu.jsp" %>
             <div class="container">
                <h1>Reservas</h1>
                 <table class="striped responsive-table">
@@ -113,7 +113,7 @@
                  </table>
             </div>
         </main>
-        <%@include file="../admin/footer.jsp"%>
+        <%@include file="../footer.jsp" %>
     </body>
 
 </html>

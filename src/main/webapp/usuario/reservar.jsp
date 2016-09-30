@@ -45,9 +45,7 @@
       <link href="<%=Routes.getUrl("css/sweetalert.css")%>" rel="stylesheet" type="text/css"/>
       <script src="<%=Routes.getUrl("js/sweetalert.min.js")%>" type="text/javascript"></script>
       <script src="<%=Routes.getUrl("js/Routes.js")%>"></script>
-
       <script>
-
             var logged = <%=logged%>;
 
             if(!sessionStorage.habitacion) {
@@ -56,13 +54,13 @@
 
             <% if(logged) { %>
               sessionStorage.usuario = <%=usuario.getId()%>;
-            <% } %> 
-
+            <% } %>
       </script>
-
+      <title>Reservar</title>
     </head>
         <%@include file="menuUser.jsp" %>
     <body>
+      <main>
         <section class="container">
             <div>
                 <div class="row">
@@ -217,11 +215,12 @@
 
                            <div id="resumen" class="hide"><!--Resumen-->
                            <div>
-                              <h3>Usted a reservado:</h3>
+                              <h3>Usted ha reservado:</h3>
                               <p><b>Habitación:</b> </p>
                               <p><b>Servicios:</b> </p>
                               <p><b>Día:</b> </p>
-                              <p><b>Hora:</b> </p><br>
+                              <p><b>Hora:</b> </p>
+                              <p><b>Por un costo de: </b>$ </p><br>
                               <p><b>Gracias por reservas en MotelsLine..</b></p>
                            </div>
                            <div class="row">
@@ -239,5 +238,7 @@
                 </div>
             </div>
         </section>
+     </main>
+        <%@include file="../admin/footer.jsp"%>
     </body>
 </html>

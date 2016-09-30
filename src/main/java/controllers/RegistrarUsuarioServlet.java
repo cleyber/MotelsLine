@@ -72,7 +72,8 @@ public class RegistrarUsuarioServlet extends HttpServlet {
                          if(insertado == 0){
                              response.setStatus(500);
                              response.getWriter().println("Error al insertar el usuario");
-                         }else{
+                         }
+                         /*else{
                             Email desde = new Email("notificacion@motelsline.com");
                             String asunto = "¡Bienvenido!";
                             Email para = new Email(usuario.getCorreo());
@@ -91,7 +92,7 @@ public class RegistrarUsuarioServlet extends HttpServlet {
                             } catch (IOException ex) {
                                 System.out.println("Error en envio de correo: " + ex);
                             }
-                         }
+                         }*/
                      }else{
                         response.setStatus(400);
                         response.getWriter().println("Las claves deben coincidir");

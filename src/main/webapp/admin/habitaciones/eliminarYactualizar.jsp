@@ -86,15 +86,16 @@
         <%@include file="../menu.jsp" %>
         <main>
             <section class="container">
-                <table class="striped centered">
+               <h1>Eliminar habitaciones</h1>
+                <table class="striped responsive-table">
                     <thead>
                         <tr>
                             <th>Nombre</th>
                             <th>Numero de habitacion</th>
                             <th>Descripción</th>
                             <th>Precio</th>
-                            <th>cantidad de horas</th>
-                            <th>hora adicional</th>
+                            <th>Cantidad de horas</th>
+                            <th>Hora adicional</th>
                             <th>Persona adicional</th>
                             <th>Actualizar</th>
                             <th>Eliminar</th>
