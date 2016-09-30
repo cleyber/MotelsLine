@@ -95,11 +95,21 @@ $(document).ready(function(){
            usuario: sessionStorage.usuario
          },
          success: function(){
+            sessionStorage.clear();
+           swal({
+             title: 'Reserva',
+             text: 'Se ha realizado la reserva correctamente',
+             type: 'success'
+           }, function() {
+             window.location = Routes.getUrl("usuario/reservas.jsp");
+           });
              ok.removeClass("hide");
              wizardProgress.css({
              width: "100%"
              }).addClass("green");
-         },error: function(respuesta){
+         },
+         error: function(respuesta){
+           swal('Error', 'Error al realizar la reserva', 'error'); 
              error.removeClass("hide");
              wizardProgress.css({
                 width: "100%"

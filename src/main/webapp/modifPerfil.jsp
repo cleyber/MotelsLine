@@ -184,18 +184,12 @@
                     </div>
                     <div id="cuenta">
                         <div class="row">
-                            <div class="card">
-
-                                    <h1>Eliminar cuenta</h1>
-
-                                <div class="card-content">
-                                    <h5>Se eliminará su perfil, registro de reservas</h5>
-                                </div>
-                            </div>
+                           <h3 class="center-align">Eliminar cuenta</h3><br>
+                           <h5>Se eliminará su perfil, registro de reservas, reservar en curso</h5>
                         </div>
                         <div class="row">
                             <div class="center-align">
-                                <div>
+                                <div style="margin-top: 10%">
                                     <button class="btn large red darken-2 waves-effect btn-empl" id="eliminarCuenta" type="button">Eliminar cuenta</button>
                                 </div>
                             </div>

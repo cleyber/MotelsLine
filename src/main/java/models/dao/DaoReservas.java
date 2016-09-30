@@ -11,6 +11,9 @@ import models.Servicios;
 import java.util.ArrayList;
 import java.sql.Date;
 
+import models.dao.DaoHabitaciones;
+import models.Usuario;
+
 /**
  *
  * @author Cleyber
@@ -46,6 +49,28 @@ public class DaoReservas {
             }
         }
         return insertado;
+    }
+
+    public ArrayList<Reservas> reservasUsuario(Usuario usuario) {
+      Conexion conexion = new Conexion();
+      DaoHabitaciones daoHabitacion = new DaoHabitaciones();
+      ArrayList<Reservas> reservas = new ArrayList<Reservas>();
+      try {
+        PreparedStatement statement = conexion.prepareStatement("SELECT *FROM reservas WHERE id_usuario=?");
+        statement.setInt(1, usuario.getId());
+        ResultSet result = statement.executeQuery();
+        while(result.next()) {
+          Reservas reserva = new Reservas();
+          reserva.setFecha(result.getDate("fecha"));
+          reserva.setHorasExtras(result.getInt("horas_extras"));
+          reserva.setPersonasExtras(result.getInt("personas_extras"));
+          reserva.setHabitacion(daoHabitacion.consultar(result.getInt("id_habitacion")));
+          reservas.add(reserva);
+        }
+      } catch(SQLException e) {
+        System.out.println("Error en consultarAll reservas: " + e.toString());
+      }
+      return reservas;
     }
 
    /*public ArrayList<Reservas> consultarAll(){

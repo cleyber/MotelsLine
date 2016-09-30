@@ -4,11 +4,15 @@
    font-family: 'Raleway', sans-serif;
 }
 
-label{
-  color:#000000;
-  font-family: Arial;
-  font-size: 15px;
+.tabs .indicator {
+   background-color: #607d8b;
 }
+
+.tabs .tab a {
+   color: #000000;
+}
+
+
 div a h5 {
    color: black;
 }
