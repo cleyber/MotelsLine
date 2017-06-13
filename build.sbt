@@ -6,6 +6,8 @@ version:= "0.1.0"
 
 enablePlugins(JettyPlugin)
 
+containerPort := 9001
+
 libraryDependencies++=Seq(
    "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
    "org.json" % "json" % "20160810",

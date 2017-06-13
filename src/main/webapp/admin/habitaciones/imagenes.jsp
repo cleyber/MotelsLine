@@ -85,8 +85,8 @@
                 <form enctype="MULTIPART/FORM-DATA" method="post" action="<%=Routes.getUrl("subirImgHabitacion.jsp?id=")%><%=id%>">
                 <div class="file-field input-field">
                 <div class="btn">
-                 <span>File</span>
-                 <input type="file" name="imagen" accept="image/*">
+                 <span>Imagén</span>
+                 <input type="file" name="imagen" accept="image/*" multiple>
                 </div>
                 <div class="file-path-wrapper">
                  <input class="file-path validate" type="text">

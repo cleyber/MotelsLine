@@ -133,7 +133,7 @@
                                     <button class="btn waves-effect" id="guardar">Guardar</button>
                                 </div>
                                 <div class="col m4">
-                                    <a href="/MotelsLine/admin" id="cancelar" class="btn red waves-effect">Cancelar</a>
+                                    <a href="<%=Routes.getUrl("admin/habitaciones/eliminarYactualizar.jsp")%>" id="cancelar" class="btn red waves-effect">Cancelar</a>
                                 </div>
                             </div>
                         </form>
